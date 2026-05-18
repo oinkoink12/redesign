@@ -138,14 +138,199 @@ img{display:block;max-width:100%}a{color:inherit;text-decoration:none}button{fon
 
 .toggle-btn{position:fixed;right:20px;bottom:20px;z-index:200;background:var(--ink);color:#fff;border:none;border-radius:999px;padding:13px 20px;font-size:14px;font-weight:800;box-shadow:0 8px 22px rgba(30,0,51,.3)}
 .toggle-btn:hover{background:var(--primary)}
-#site-new{display:none;min-height:70vh;align-items:center;justify-content:center;text-align:center;padding:80px 20px}
-#site-new .np{max-width:460px}
-#site-new .np .big{font-size:46px;font-weight:800;background:linear-gradient(135deg,#fc5628,#e2461c);-webkit-background-clip:text;background-clip:text;color:transparent}
-#site-new .np p{color:var(--muted);margin-top:12px;font-size:15px}
-body.mode-new #site-current{display:none}body.mode-new #site-new{display:flex}
+#site-new{display:none}
+body.mode-new #site-current{display:none}body.mode-new #site-new{display:block}
 #view-brand,#view-pdp{display:none}
 body.v-brand #view-vertical{display:none}body.v-brand #view-brand{display:block}
 body.v-pdp #view-vertical,body.v-pdp #view-brand{display:none}body.v-pdp #view-pdp{display:block}
+#nv-brand,#nv-pdp{display:none}
+body.v-brand #nv-vertical{display:none}body.v-brand #nv-brand{display:block}
+body.v-pdp #nv-vertical,body.v-pdp #nv-brand{display:none}body.v-pdp #nv-pdp{display:block}
+
+/* ===================== NEW DESIGN ===================== */
+#site-new{--ndink:#1d1340;--ndtop:#241544;--ndnavy:#1f1147;--ndsoft:#f4f4fa;--ndpeach:#fbe6d6;
+  --ndline:rgba(29,19,64,.10);--ndmut:#8a8398;font-family:"Stabil Grotesk",-apple-system,sans-serif;color:var(--ndink);background:#fff}
+#site-new .wrap{max-width:1200px;margin:0 auto;padding:0 22px}
+.nd-acc{height:3px;background:linear-gradient(90deg,#3b6fe5,#7a5cf0)}
+.nd-top{background:var(--ndtop);color:#b9b0d6;font-size:11px}
+.nd-top .wrap{display:flex;gap:22px;height:30px;align-items:center}
+.nd-top span::before{content:"•";margin-right:8px;color:#6b5fa6}
+.nd-top span:first-child::before{display:none}.nd-top .lang{margin-left:auto}
+.nd-head{background:#fff;border-bottom:1px solid var(--ndline)}
+.nd-head .wrap{display:flex;align-items:center;gap:24px;height:66px}
+.nd-logo{font-size:24px;font-weight:800;letter-spacing:-.02em;color:var(--ndnavy);cursor:pointer}
+.nd-logo b{color:var(--primary)}
+.nd-srch{flex:1;display:flex;align-items:center;background:var(--ndsoft);border:1px solid var(--ndline);border-radius:999px;padding:11px 18px;gap:10px}
+.nd-srch input{flex:1;border:none;background:none;font-family:inherit;font-size:14px;outline:none;color:var(--ndink)}
+.nd-srch input::placeholder{color:var(--ndmut)}
+.nd-acct{display:flex;align-items:center;gap:18px;font-size:13px;font-weight:600;white-space:nowrap}
+.nd-acct .bag{position:relative}
+.nd-acct .bag i{position:absolute;top:-8px;right:-9px;background:var(--primary);color:#fff;font-size:9px;font-weight:800;border-radius:999px;padding:1px 5px;font-style:normal}
+.nd-nav{background:var(--ndsoft);border-bottom:1px solid var(--ndline)}
+.nd-nav .wrap{display:flex;align-items:center;gap:4px;height:42px;font-size:13px;font-weight:600}
+.nd-nav a{padding:6px 12px;border-radius:8px;opacity:.7;cursor:pointer}
+.nd-nav a:hover{opacity:1}.nd-nav a.on{background:#e7e7f1;opacity:1}
+.nd-nav .lang{margin-left:auto;opacity:.65;font-weight:500}
+.nd-crumb{font-size:12px;color:var(--ndmut);padding:14px 0 0}.nd-crumb a{color:var(--primary);cursor:pointer}
+
+.nd-btn{background:var(--primary);color:#fff;border:none;border-radius:10px;padding:11px 20px;font-size:14px;font-weight:700;font-family:inherit;cursor:pointer}
+.nd-btn:hover{background:var(--primary-dark)}
+.nd-h2{display:flex;align-items:center;justify-content:space-between;margin:40px 0 16px}
+.nd-h2 h2{font-size:22px;font-weight:500;color:var(--ndmut)}
+.nd-h2 h2 b{color:var(--ndink);font-weight:800;border-bottom:3px solid var(--primary);padding-bottom:3px}
+
+.nd-hero{position:relative;overflow:hidden;background:
+  radial-gradient(60% 90% at 80% 10%,rgba(255,255,255,.5),transparent),
+  radial-gradient(circle at 10% 90%,rgba(255,255,255,.35),transparent),var(--ndpeach)}
+.nd-hero::after{content:"";position:absolute;inset:0;background-image:repeating-radial-gradient(circle at 85% 30%,rgba(255,255,255,.12) 0 1px,transparent 1px 22px);pointer-events:none}
+.nd-hero .wrap{display:grid;grid-template-columns:1fr 1.05fr;gap:30px;padding:48px 22px;align-items:center;position:relative}
+.nd-hero h1{font-size:46px;font-weight:800;letter-spacing:-.02em}
+.nd-hero .sub{font-size:16px;color:#7a6a55;margin:10px 0 22px}
+.nd-deal{background:#fff;border-radius:18px;box-shadow:0 18px 50px rgba(29,19,64,.16);display:grid;grid-template-columns:1fr 1.1fr;overflow:hidden;position:relative}
+.nd-deal .dl{position:relative;background:var(--ndsoft);display:flex;align-items:center;justify-content:center;padding:26px;min-height:260px}
+.nd-deal .dl img{max-height:230px;object-fit:contain}
+.nd-deal .tm{position:absolute;top:14px;left:14px;background:#fff;border:1px solid var(--ndline);color:var(--ndink);font-size:11px;font-weight:700;padding:5px 11px;border-radius:999px}
+.nd-deal .di{padding:22px 24px;display:flex;flex-direction:column}
+.nd-deal .blg{font-weight:800;font-size:13px;color:var(--ndnavy);text-transform:uppercase;letter-spacing:.04em}
+.nd-deal .soc{display:flex;gap:8px;font-size:11px;color:var(--ndmut);margin:8px 0 12px}
+.nd-deal .soc span{background:var(--ndsoft);padding:5px 10px;border-radius:999px;font-weight:600}
+.nd-deal h3{font-size:20px;font-weight:800;line-height:1.25;margin-bottom:8px}
+.nd-deal .adv{font-size:12px;color:var(--ndmut);margin-bottom:2px}
+.nd-deal .nd-pr{margin:2px 0 16px}
+.nd-deal .nd-btn{align-self:flex-start}
+.nd-deal .narr{position:absolute;right:16px;bottom:16px;width:38px;height:38px;border-radius:50%;background:var(--ndnavy);color:#fff;border:none;font-size:16px;cursor:pointer;opacity:.9}
+.nd-deal .narr:hover{opacity:1}
+
+.nd-pr{font-weight:800;color:var(--primary);white-space:nowrap}
+.nd-pr .i{font-size:30px}.nd-pr .c{font-size:15px;vertical-align:super;margin-left:1px}
+.nd-pr.sm .i{font-size:21px}.nd-pr.sm .c{font-size:11px}
+
+.nd-chips{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:18px 0 4px;font-size:12px;color:var(--ndmut)}
+.nd-chips b{color:var(--ndink)}
+.nd-chips a{background:var(--ndsoft);border:1px solid var(--ndline);border-radius:999px;padding:6px 13px;font-weight:600;color:var(--ndink);cursor:pointer}
+.nd-chips a:hover{border-color:var(--primary)}
+
+.nd-tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.nd-tile{position:relative;height:210px;border-radius:16px;overflow:hidden;cursor:pointer;background:#e9b48c}
+.nd-tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.9;mix-blend-mode:multiply}
+.nd-tile::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(229,125,57,.15),rgba(229,125,57,.55))}
+.nd-tile span{position:absolute;left:18px;bottom:16px;z-index:1;color:#fff;font-weight:800;font-size:17px}
+.nd-tile:hover img{opacity:1}
+
+.nd-block{display:grid;grid-template-columns:230px 1fr;gap:18px;margin:18px 0 8px}
+.nd-life{position:relative;border-radius:16px;overflow:hidden;min-height:300px;background:linear-gradient(135deg,#5a4b6e,#241544)}
+.nd-life img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.6}
+.nd-life .cm{position:absolute;left:14px;bottom:14px;color:#fff;font-size:11px;opacity:.85;background:rgba(0,0,0,.3);padding:4px 9px;border-radius:999px}
+.nd-bcol{display:flex;flex-direction:column}
+.nd-brow{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.nd-brow .blg{background:#fff;border:1px solid var(--ndline);font-weight:800;font-size:12px;border-radius:8px;padding:7px 12px}
+.nd-brow .bn{font-weight:800;font-size:15px}.nd-brow .dd{font-size:11px;color:var(--ndmut)}
+.nd-brow .nd-btn{margin-left:auto;padding:8px 16px}
+.nd-bgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+
+.nd-card{background:#fff;border:1px solid var(--ndline);border-radius:14px;overflow:hidden;cursor:pointer;display:flex;flex-direction:column;transition:.16s}
+.nd-card:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(29,19,64,.10)}
+.ndc-iw{position:relative;aspect-ratio:1;background:var(--ndsoft);display:flex;align-items:center;justify-content:center;padding:16px}
+.ndc-iw img{max-height:100%;object-fit:contain}
+.ndc-bl{position:absolute;top:10px;left:10px;font-size:10px;font-weight:800;color:var(--ndnavy);text-transform:uppercase;letter-spacing:.04em;background:#fff;border:1px solid var(--ndline);border-radius:7px;padding:3px 8px}
+.ndc-tm{position:absolute;top:10px;right:10px;font-size:10px;font-weight:700;color:var(--ndmut);background:#fff;border:1px solid var(--ndline);border-radius:999px;padding:3px 8px}
+.ndc-bd{padding:12px 13px 15px;display:flex;flex-direction:column;flex:1}
+.ndc-ti{font-size:13px;font-weight:600;line-height:1.35;margin-bottom:8px;flex:1;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.ndc-ad{font-size:11px;color:var(--ndmut);margin-bottom:5px}
+
+/* brand-detail / flashpage */
+.nd-bn{position:relative;overflow:hidden;background:
+  radial-gradient(70% 120% at 80% 0,rgba(255,255,255,.45),transparent),var(--ndpeach)}
+.nd-bn::after{content:"";position:absolute;inset:0;background-image:repeating-radial-gradient(circle at 10% 50%,rgba(255,255,255,.10) 0 1px,transparent 1px 26px);pointer-events:none}
+.nd-bn .wrap{display:grid;grid-template-columns:1fr 360px;gap:24px;padding:26px 22px;align-items:center;position:relative}
+.nd-bn .chip{background:#fff;border-radius:10px;padding:8px 14px;display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:700;box-shadow:0 6px 18px rgba(29,19,64,.10)}
+.nd-bn .chip .dd{color:var(--ndmut);font-weight:500}
+.nd-bn h1{font-size:34px;font-weight:800;margin:16px 0 6px}
+.nd-bn p{font-size:14px;color:#7a6a55}
+.nd-bn .pic{height:200px;border-radius:16px;overflow:hidden;background:#cbb8a6}
+.nd-bn .pic img{width:100%;height:100%;object-fit:cover}
+.nd-list{display:grid;grid-template-columns:226px 1fr;gap:26px;padding:24px 0 10px}
+.nd-side .sh{display:flex;justify-content:space-between;align-items:center;font-weight:800;font-size:14px;padding-bottom:6px}
+.nd-side .sh a{color:var(--primary);font-size:12px;font-weight:600;cursor:pointer}
+.nd-grp{border-top:1px solid var(--ndline);padding:14px 0}
+.nd-grp h4{display:flex;justify-content:space-between;font-size:13px;font-weight:700;cursor:pointer}
+.nd-grp .bd{display:none;margin-top:12px}.nd-grp.open .bd{display:block}.nd-grp.open h4 .cv{transform:rotate(180deg)}
+.nd-grp .opt{display:flex;align-items:center;gap:9px;font-size:13px;color:var(--ndink);padding:5px 0;cursor:pointer}
+.nd-grp .opt i{width:15px;height:15px;border:1px solid var(--ndmut);border-radius:4px;display:inline-block}
+.nd-grp .opt.on i{background:var(--primary);border-color:var(--primary)}
+.nd-grp .opt.on{font-weight:700}
+.nd-grp .more{font-size:12px;color:var(--primary);font-weight:600;margin-top:8px;cursor:pointer}
+.nd-toolb{display:flex;align-items:center;justify-content:space-between;padding-bottom:16px;font-size:14px;font-weight:700}
+.nd-toolb select{font-family:inherit;font-size:13px;border:1px solid var(--ndline);border-radius:999px;padding:9px 14px;background:#fff;cursor:pointer}
+.nd-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-content:start}
+
+/* newsletter / service / footer */
+.nd-news{background:linear-gradient(100deg,#36408f,#5a64c9);color:#fff;margin:36px 0;border-radius:0}
+.nd-news .wrap{display:grid;grid-template-columns:1fr 1fr;gap:30px;padding:30px 22px;align-items:center}
+.nd-news h3{font-size:24px;font-weight:800;margin-bottom:14px}
+.nd-news .fld{display:flex;gap:10px;max-width:380px}
+.nd-news input{flex:1;border:none;border-radius:8px;padding:11px 14px;font-family:inherit;font-size:13px}
+.nd-news .nd-btn{background:#241544}.nd-news .nd-btn:hover{background:#160b2c}
+.nd-news ul{list-style:none;font-size:13px;display:flex;flex-direction:column;gap:8px;opacity:.92}
+.nd-svc{background:#fbdcd9}
+.nd-svc .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding:28px 22px;font-size:13px;color:#6b4a48}
+.nd-svc h4{font-size:15px;font-weight:800;color:var(--ndink);margin-bottom:8px}
+.nd-svc h4 b{border-bottom:3px solid var(--primary);padding-bottom:2px}
+.nd-svc a{color:var(--primary)}
+.nd-foot{background:var(--ndnavy);color:#b9b0d6;font-size:12px}
+.nd-foot .wrap{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:30px;padding:34px 22px}
+.nd-foot .nd-logo{color:#fff;font-size:22px}.nd-foot .tg{margin-top:6px}
+.nd-foot b{display:block;color:#fff;margin-bottom:10px}
+.nd-foot .ln div{margin:6px 0;cursor:pointer}
+.nd-foot .seal{width:78px;height:78px;border-radius:50%;background:radial-gradient(circle,#f3c969,#caa23b);color:#241544;font-weight:800;font-size:11px;display:flex;align-items:center;justify-content:center;text-align:center;line-height:1.2}
+.nd-foot .badges{display:flex;gap:8px;margin-top:10px}
+.nd-foot .badges span{background:#000;color:#fff;border-radius:7px;padding:7px 12px;font-size:11px}
+.nd-foot .legal{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.12);padding-top:16px;margin-top:8px;text-align:center}
+
+/* PDP */
+.nd-pdp{display:grid;grid-template-columns:1.05fr 1fr;gap:42px;padding:18px 0 10px;align-items:start}
+.nd-gal{display:flex;flex-direction:column;gap:14px}
+.nd-gal .im{background:var(--ndsoft);border-radius:14px;display:flex;align-items:center;justify-content:center;padding:30px;min-height:420px}
+.nd-gal .im img{max-height:520px;object-fit:contain}
+.nd-thumbs{display:flex;gap:10px}
+.nd-thumbs span{width:80px;height:80px;border:1px solid var(--ndline);border-radius:10px;background:var(--ndsoft);display:flex;align-items:center;justify-content:center;padding:8px;cursor:pointer}
+.nd-thumbs img{max-width:100%;max-height:100%;object-fit:contain}
+.nd-rt{position:sticky;top:14px}
+.nd-rt .bl{font-size:12px;font-weight:800;color:var(--ndmut);text-transform:uppercase;letter-spacing:.06em}
+.nd-rt h1{font-size:28px;font-weight:800;line-height:1.2;margin:8px 0 10px}
+.nd-rt .ds{font-size:13px;color:var(--ndmut);line-height:1.5;margin-bottom:12px}
+.nd-rt .rate{font-size:13px;color:var(--ndmut);margin-bottom:18px}.nd-rt .rate b{color:#f0a91e}
+.nd-prow{display:flex;align-items:center;gap:12px;margin-bottom:6px}
+.nd-prow .nd-pr .i{font-size:34px}.nd-prow .nd-pr .c{font-size:17px}
+.nd-prow .old{color:var(--ndmut);text-decoration:line-through;font-size:15px;font-weight:600}
+.nd-prow .disc{background:#fde0d6;color:var(--primary-dark);font-size:12px;font-weight:800;border-radius:999px;padding:3px 9px}
+.nd-rt .dlv{font-size:12px;color:var(--ndmut);margin:6px 0 22px}
+.nd-rt .lbl{font-size:13px;font-weight:700;margin-bottom:8px}
+.nd-sz{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px}
+.nd-sz b{min-width:48px;text-align:center;border:1px solid var(--ndline);border-radius:8px;padding:11px 0;font-size:13px;font-weight:600;cursor:pointer}
+.nd-sz b:hover{border-color:var(--ndnavy)}
+.nd-sz b.on{background:var(--ndnavy);color:#fff;border-color:var(--ndnavy)}
+.nd-rt .mt{font-size:12px;color:var(--ndink);margin-bottom:18px;cursor:pointer;display:inline-block}
+.nd-sw{width:46px;height:46px;border:2px solid var(--ndnavy);border-radius:8px;background:#efe6da;margin-bottom:18px}
+.nd-stock{color:#1f9d55;font-size:13px;font-weight:700;margin-bottom:16px}
+.nd-cta{display:flex;gap:10px;margin-bottom:20px}
+.nd-cta .nd-btn{flex:1;padding:15px;font-size:15px}
+.nd-cta .hrt{width:52px;border:1px solid var(--ndline);background:#fff;border-radius:10px;font-size:18px;cursor:pointer}
+.nd-usp{list-style:none;font-size:13px;color:var(--ndink);display:flex;flex-direction:column;gap:9px;padding:18px 0;border-top:1px solid var(--ndline);border-bottom:1px solid var(--ndline);margin-bottom:6px}
+.nd-usp li::before{content:"✓";color:var(--primary);font-weight:800;margin-right:9px}
+.nd-acco .ac{border-bottom:1px solid var(--ndline)}
+.nd-acco .ac h4{display:flex;justify-content:space-between;align-items:center;font-size:15px;font-weight:800;padding:18px 0;cursor:pointer}
+.nd-acco .ac .cv{transition:.2s;color:var(--ndmut)}
+.nd-acco .ac .bd{display:none;padding-bottom:18px;font-size:13px;color:var(--ndink);line-height:1.65}
+.nd-acco .ac.open .bd{display:block}.nd-acco .ac.open .cv{transform:rotate(180deg)}
+.nd-acco .ac ul{margin:8px 0 0 18px}
+.nd-also{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+
+@media(max-width:980px){.nd-hero .wrap,.nd-pdp,.nd-bn .wrap,.nd-news .wrap{grid-template-columns:1fr}
+  .nd-deal{grid-template-columns:1fr}.nd-block{grid-template-columns:1fr}.nd-list{grid-template-columns:1fr}
+  .nd-side{display:none}.nd-tiles,.nd-bgrid,.nd-grid{grid-template-columns:repeat(2,1fr)}
+  .nd-also{grid-template-columns:repeat(3,1fr)}.nd-foot .wrap,.nd-svc .wrap{grid-template-columns:1fr}
+  .nd-nav,.nd-top{display:none}.nd-rt{position:static}}
 /* PDP */
 .pdp{display:grid;grid-template-columns:1.05fr 1fr;gap:34px;padding:18px 0 10px}
 .gal .big{background:#f6f5fa;border-radius:14px;aspect-ratio:1;display:flex;align-items:center;justify-content:center;padding:30px}
@@ -307,11 +492,120 @@ body.v-pdp #view-vertical,body.v-pdp #view-brand{display:none}body.v-pdp #view-p
   </div><div class="legal">iBOOD 2026 · 020-6811388 · customerservice@ibood.nl · KVK 34201965 · Amsterdam, Nederland</div></footer>
 </div>
 
-<div id="site-new"><div class="np">
-  <div class="big">Nieuw design</div>
-  <p>Komt hier zodra je de mockups paste — toggle, dataset en de
-     vertical→merk-detail-flow staan klaar om hergebruikt te worden.</p>
-</div></div>
+<div id="site-new">
+  <div class="nd-acc"></div>
+  <div class="nd-top"><div class="wrap">
+    <span>Dagelijks de beste deal voor de scherpste prijs</span>
+    <span>Elke dag nieuwe deals</span>
+    <span>Al 21 jaar de beste deals van Europa</span>
+    <span>Actieve community</span><span class="lang">🇳🇱 NL ▾</span>
+  </div></div>
+  <header class="nd-head"><div class="wrap">
+    <div class="nd-logo" onclick="goVertical()">iBOOD<b>.</b></div>
+    <div class="nd-srch"><span>🔍</span><input placeholder="Waar ben je naar op zoek?"></div>
+    <div class="nd-acct"><span>👤 Inloggen</span><span class="bag">🛍<i>1</i></span></div>
+  </div></header>
+  <nav class="nd-nav"><div class="wrap" id="nd-nav"></div></nav>
+
+  <!-- ===== NEW: VERTICAL ===== -->
+  <div id="nv-vertical">
+    <section class="nd-hero"><div class="wrap">
+      <div class="nd-hero-t"><h1>Fashion</h1>
+        <p class="sub" id="nd-hero-sub"></p>
+        <button class="nd-btn" onclick="document.getElementById('nd-brands').scrollIntoView({behavior:'smooth'})">Bekijk alle deals</button></div>
+      <div class="nd-deal" id="nd-deal"></div>
+    </div></section>
+    <div class="wrap">
+      <div class="nd-chips"><b>Direct naar</b><span id="nd-chips"></span></div>
+      <div class="nd-h2"><h2><b>Top deals</b> &nbsp;voor weinig dagen</h2>
+        <button class="nd-btn" id="nd-topall">Bekijk alle deals</button></div>
+      <div class="nd-tiles" id="nd-tiles"></div>
+      <div class="nd-h2" id="nd-brands"><h2><b>Brands</b> &nbsp;deals</h2></div>
+      <div id="nd-blocks"></div>
+    </div>
+  </div>
+
+  <!-- ===== NEW: BRAND DETAIL / FLASHPAGE ===== -->
+  <div id="nv-brand">
+    <div class="wrap"><div class="nd-crumb"><a onclick="goVertical()">Home</a> / <a onclick="goVertical()">Fashion</a> / <span id="nd-bc"></span></div></div>
+    <section class="nd-bn"><div class="wrap">
+      <div><span class="nd-bn-chip chip" id="nd-bn-chip"></span>
+        <h1 id="nd-bn-h">Keep it light</h1>
+        <p id="nd-bn-p">flower district vibes — topdeals van dit merk tegen bodemprijzen, zolang de voorraad strekt.</p></div>
+      <div class="pic"><img id="nd-bn-pic" alt="" onerror="this.style.visibility='hidden'"></div>
+    </div></section>
+    <div class="wrap">
+      <div class="nd-list">
+        <aside class="nd-side" id="nd-side"></aside>
+        <div>
+          <div class="nd-toolb"><span id="nd-count"></span>
+            <select id="nd-sort" onchange="renderNdGrid()">
+              <option value="rel">Sorteer op datum</option>
+              <option value="asc">Prijs oplopend</option>
+              <option value="desc">Prijs aflopend</option>
+            </select></div>
+          <div class="nd-grid" id="nd-grid"></div>
+        </div>
+      </div>
+    </div>
+    <section class="nd-news"><div class="wrap">
+      <div><h3>Mis nooit meer een deal!</h3>
+        <div class="fld"><input placeholder="E-mailadres"><button class="nd-btn">Aanmelden</button></div></div>
+      <ul><li>⚡ Extra winacties &amp; kortingscodes</li><li>🎯 Gepersonaliseerde deal-tips</li><li>📩 Dagelijks de nieuwste deals in je inbox</li></ul>
+    </div></section>
+    <div class="wrap">
+      <div class="nd-h2"><h2><b>Eerder</b> &nbsp;bekeken</h2></div>
+      <div class="nd-also" id="nd-seen"></div>
+    </div>
+  </div>
+
+  <!-- ===== NEW: PDP ===== -->
+  <div id="nv-pdp"><div class="wrap">
+    <div class="nd-crumb"><a onclick="goVertical()">Home</a> / <a onclick="goVertical()">Fashion</a> / <span id="nd-pd-bc"></span></div>
+    <div class="nd-pdp">
+      <div class="nd-gal" id="nd-gal"></div>
+      <div class="nd-rt">
+        <div class="bl" id="nd-pd-brand"></div>
+        <h1 id="nd-pd-title"></h1>
+        <div class="ds" id="nd-pd-desc"></div>
+        <div class="rate"><b>★ 4.6/5</b> &nbsp;(12 reviews)</div>
+        <div class="nd-prow"><span class="nd-pr" id="nd-pd-price"></span><span class="old" id="nd-pd-old"></span><span class="disc" id="nd-pd-disc"></span></div>
+        <div class="dlv">🚚 Voor 23:00 uur besteld, morgen in huis</div>
+        <div class="lbl">Kies maat</div>
+        <div class="nd-sz" id="nd-pd-sizes"></div>
+        <span class="mt">📏 Maattabel</span>
+        <div class="lbl" id="nd-pd-clbl">Kleur</div>
+        <div class="nd-sw"></div>
+        <div class="nd-stock">Nog 6 op voorraad</div>
+        <div class="nd-cta"><button class="nd-btn">In winkelmandje 🛍</button><button class="hrt">♡</button></div>
+        <ul class="nd-usp"><li>Gratis verzending vanaf €20</li><li>30 dagen bedenktijd</li><li>Achteraf betalen mogelijk</li></ul>
+        <div class="nd-acco" id="nd-pd-acco"></div>
+      </div>
+    </div>
+    <div class="nd-h2"><h2><b>Dit vind je</b> &nbsp;misschien ook leuk</h2></div>
+    <div class="nd-also" id="nd-pd-also"></div>
+  </div></div>
+
+  <section class="nd-news"><div class="wrap">
+    <div><h3>Mis nooit meer een deal!</h3>
+      <div class="fld"><input placeholder="E-mailadres"><button class="nd-btn">Aanmelden</button></div></div>
+    <ul><li>⚡ Extra winacties &amp; kortingscodes</li><li>🎯 Gepersonaliseerde deal-tips</li><li>📩 Dagelijks de nieuwste deals in je inbox</li></ul>
+  </div></section>
+  <section class="nd-svc"><div class="wrap">
+    <div><h4><b>Service</b> &amp; Contact</h4>Wij helpen je graag verder met je bestelling of vragen.</div>
+    <div><h4>Snel zelf regelen?</h4>Volg je bestelling of retourneer een artikel via <a>je account</a> of de <a>veelgestelde vragen</a>.</div>
+    <div><h4>Kom je er niet uit?</h4>📞 020-6811388<br>✉️ customerservice@ibood.nl</div>
+  </div></section>
+  <footer class="nd-foot"><div class="wrap">
+    <div><div class="nd-logo">iBOOD<b style="color:var(--primary)">.</b></div>
+      <div class="tg">Dagelijks de beste deals voor de scherpste prijs</div>
+      <div class="badges"><span>🍎 App Store</span><span>▶ Google Play</span></div></div>
+    <div><b>Klantenservice</b><div class="ln"><div>Veelgestelde vragen</div><div>Retourbeleid</div><div>Contact</div></div></div>
+    <div style="display:flex;justify-content:space-between"><div><b>Over iBOOD</b><div class="ln"><div>Wie zijn wij?</div><div>Werken bij iBOOD</div><div>Actievoorwaarden</div><div>Privacy</div><div>Cookies</div></div></div>
+      <div class="seal">website van het jaar 2025</div></div>
+    <div class="legal">iBOOD 2026 · 020-6811388 · customerservice@ibood.nl · KVK 34201965 · Amsterdam, Nederland</div>
+  </div></footer>
+</div>
 
 <button class="toggle-btn" id="toggle" onclick="toggleDesign()">✨ Nieuw design</button>
 
@@ -412,7 +706,7 @@ function openBrand(b){
   document.getElementById('bc-brand').textContent=b;
   document.getElementById('bn-lg').textContent=b;
   document.getElementById('bn-name').textContent=b;
-  side();renderGrid();window.scrollTo({top:0});
+  side();renderGrid();renderNdBrand(b);window.scrollTo({top:0});
 }
 function goVertical(){state.view='vertical';document.body.classList.remove('v-brand');document.body.classList.remove('v-pdp');window.scrollTo({top:0});}
 
@@ -446,6 +740,7 @@ function openPDP(id){
   document.getElementById('pd-hot').innerHTML  = POOL.slice(0,8).map(card).join('');
   document.getElementById('pd-also').innerHTML = same.concat(POOL).slice(0,8).map(card).join('');
   document.getElementById('pd-new').innerHTML  = PRODUCTS.slice(0,8).map(card).join('');
+  renderNdPDP(p);
   window.scrollTo({top:0});
 }
 function toggleFilters(){
@@ -462,9 +757,135 @@ function toggleDesign(){
 (function(){let m='current';try{m=localStorage.getItem('fr-mode')||'current';}catch(e){}
   if(m==='new'){document.body.classList.add('mode-new');document.getElementById('toggle').textContent='↩ Huidige site';}})();
 
+/* ===================== NEW DESIGN RENDERERS ===================== */
+const esc = s => String(s).replace(/'/g,"\\'");
+function ndPrice(n,sm){const s=ep(n);return `<span class="nd-pr${sm?' sm':''}"><span class="i">${s[0]}</span><span class="c">,${s[1]}</span></span>`;}
+function ndCard(p){
+  return `<article class="nd-card" onclick="openPDP('${esc(p.id)}')">
+    <div class="ndc-iw"><span class="ndc-bl">${p.brand}</span><span class="ndc-tm">⏱ Nog 9 dagen</span>
+      <img src="${p.imageUrl}" alt="${p.shortTitle||p.title}" loading="lazy" onerror="this.style.visibility='hidden'"></div>
+    <div class="ndc-bd"><div class="ndc-ti">${p.title}</div>
+      <div class="ndc-ad">${advies(p.price)}</div>${ndPrice(p.salePrice,true)}</div>
+  </article>`;
+}
+function ndDiscount(p){return Math.max(0,Math.round((1-p.salePrice/p.price)*100));}
+
+function renderNdNav(){document.getElementById('nd-nav').innerHTML =
+  NAV.map(l=>`<a class="${l==='Fashion'?'on':''}" onclick="goVertical()">${l} ▾</a>`).join('')
+  + '<span class="lang">🇳🇱 NL ▾</span>';}
+
+/* --- new hero --- */
+let ndHeroIdx=0,ndHeroTimer=null;
+function renderNdHero(){const p=POOL[ndHeroIdx];if(!p)return;
+  document.getElementById('nd-hero-sub').textContent = p.brand+' maakt indruk deze week.';
+  document.getElementById('nd-deal').innerHTML = `
+    <div class="dl"><span class="tm">⏱ Nog 9 dagen</span>
+      <img src="${p.imageUrl}" alt="${p.title}" onerror="this.style.visibility='hidden'"></div>
+    <div class="di"><div class="blg">${p.brand}</div>
+      <div class="soc"><span>💬 Praat mee 1</span><span>↗ Deel</span><span>♡ Hou ik van</span></div>
+      <h3>${p.title}</h3>
+      <div class="adv">${advies(p.price)}</div>${ndPrice(p.salePrice)}
+      <button class="nd-btn" onclick="event.stopPropagation();openPDP('${esc(p.id)}')">Bekijk deal</button>
+      <button class="narr" onclick="event.stopPropagation();ndHeroNav(1)">›</button></div>`;
+}
+function ndHeroNav(d){ndHeroIdx=(ndHeroIdx+d+POOL.length)%POOL.length;renderNdHero();ndRestartHero();}
+function ndRestartHero(){clearInterval(ndHeroTimer);ndHeroTimer=setInterval(()=>ndHeroNav(1),6000);}
+
+function renderNdVertical(){
+  const brands=brandsOf(POOL);
+  document.getElementById('nd-chips').innerHTML =
+    brands.concat(SUBCATS).slice(0,8).map(b=>
+      `<a onclick="${brands.includes(b)?`openBrand('${esc(b)}')`:`openBrand('${esc(brands[0])}')`}">${b}</a>`).join('');
+  document.getElementById('nd-topall').onclick=()=>openBrand(brands[0]);
+  // 3 lifestyle category tiles
+  const tileBrands=brands.slice(0,3);
+  document.getElementById('nd-tiles').innerHTML = tileBrands.map((b,i)=>{
+    const it=POOL.filter(p=>p.brand===b);const img=(it[i]||it[0]).imageUrl;
+    return `<div class="nd-tile" onclick="openBrand('${esc(b)}')">
+      <img src="${img}" onerror="this.style.display='none'"><span>${b}</span></div>`;
+  }).join('');
+  // per-brand blocks
+  document.getElementById('nd-blocks').innerHTML = brands.map(b=>{
+    const items=POOL.filter(p=>p.brand===b);
+    return `<div class="nd-block">
+      <div class="nd-life" onclick="openBrand('${esc(b)}')">
+        <img src="${items[0].imageUrl}" onerror="this.style.display='none'">
+        <span class="cm">💬 0 opmerkingen</span></div>
+      <div class="nd-bcol">
+        <div class="nd-brow"><span class="blg">${b}</span><span class="bn">${b}</span>
+          <span class="dd">Nog 6 dagen</span>
+          <button class="nd-btn" onclick="openBrand('${esc(b)}')">Bekijk alle ${items.length} deals</button></div>
+        <div class="nd-bgrid">${items.slice(0,3).map(ndCard).join('')}</div></div>
+    </div>`;
+  }).join('');
+  document.getElementById('nd-hero-sub').textContent='';
+}
+
+/* --- new brand-detail / flashpage --- */
+function renderNdSide(){
+  const brands=brandsOf(POOL);
+  const grp=(t,body,open)=>`<div class="nd-grp${open?' open':''}"><h4 onclick="this.parentElement.classList.toggle('open')">${t}<span class="cv">▾</span></h4><div class="bd">${body}</div></div>`;
+  const opt=(x,sel,br)=>`<div class="opt${sel?' on':''}" ${br?`onclick="openBrand('${esc(x)}')"`:`onclick="this.classList.toggle('on')"`}><i></i>${x}</div>`;
+  document.getElementById('nd-side').innerHTML =
+    `<div class="sh">Filteren <a onclick="renderNdSide()">Alles wissen</a></div>`+
+    grp('Merk',brands.map(x=>opt(x,x===state.brand,true)).join(''),true)+
+    grp('Categorieën',SUBCATS.map(x=>opt(x)).join(''))+
+    grp('Geslacht',['Men','Women'].map(x=>opt(x)).join(''))+
+    grp('Kleur',COLORS.slice(0,4).map(x=>opt(x)).join('')+'<div class="more">Toon meer ▾</div>',true)+
+    grp('Maat',SIZES.map(x=>opt(x)).join(''))+
+    grp('Type',SUBCATS.map(x=>opt(x)).join(''))+
+    grp('Voorraad',['Beschikbaar','Uitverkocht'].map((x,i)=>opt(x,i===0)).join(''));
+}
+function renderNdGrid(){
+  let items=POOL.filter(p=>p.brand===state.brand);
+  const s=document.getElementById('nd-sort').value;
+  if(s==='asc')items=items.slice().sort((a,b)=>a.salePrice-b.salePrice);
+  if(s==='desc')items=items.slice().sort((a,b)=>b.salePrice-a.salePrice);
+  document.getElementById('nd-grid').innerHTML = items.map(ndCard).join('') || '<p style="color:var(--ndmut)">Geen producten.</p>';
+  document.getElementById('nd-count').textContent = items.length+' results';
+}
+function renderNdBrand(b){
+  const items=POOL.filter(p=>p.brand===b);
+  document.getElementById('nd-bc').textContent=b;
+  document.getElementById('nd-bn-chip').innerHTML=`👕 ${b} <span class="dd">Nog 6 dagen</span>`;
+  document.getElementById('nd-bn-h').textContent=b;
+  document.getElementById('nd-bn-p').textContent='Topdeals van '+b+' tegen bodemprijzen — zolang de voorraad strekt.';
+  if(items[0])document.getElementById('nd-bn-pic').src=items[0].imageUrl;
+  renderNdSide();renderNdGrid();
+  document.getElementById('nd-seen').innerHTML = PRODUCTS.slice(0,5).map(ndCard).join('');
+}
+
+/* --- new PDP --- */
+function renderNdPDP(p){
+  const same=PRODUCTS.filter(x=>x.brand===p.brand && x.id!==p.id).slice(0,3);
+  const imgs=[p].concat(same);
+  document.getElementById('nd-pd-bc').textContent=p.title;
+  document.getElementById('nd-gal').innerHTML =
+    imgs.map(t=>`<div class="im"><img src="${t.imageUrl}" alt="${t.title}" onerror="this.style.visibility='hidden'"></div>`).join('')
+    + `<div class="nd-thumbs">${imgs.map(t=>`<span onclick="openPDP('${esc(t.id)}')"><img src="${t.imageUrl}" onerror="this.style.visibility='hidden'"></span>`).join('')}</div>`;
+  document.getElementById('nd-pd-brand').textContent=p.brand;
+  document.getElementById('nd-pd-title').textContent=p.title;
+  document.getElementById('nd-pd-desc').textContent='Maak je look compleet met deze '+(p.shortTitle||p.title).toLowerCase()+' van '+p.brand+'.';
+  document.getElementById('nd-pd-price').innerHTML=ndPrice(p.salePrice).replace(/^<span class="nd-pr">|<\/span>$/g,'');
+  document.getElementById('nd-pd-old').textContent='€ '+Number(p.price).toFixed(2).replace('.',',');
+  document.getElementById('nd-pd-disc').textContent='-'+ndDiscount(p)+'%';
+  document.getElementById('nd-pd-sizes').innerHTML=SIZES.slice(0,5).map((s,i)=>
+    `<b class="${i===1?'on':''}" onclick="[...this.parentElement.children].forEach(c=>c.classList.remove('on'));this.classList.add('on')">${s}</b>`).join('');
+  document.getElementById('nd-pd-clbl').textContent='Kleur: '+COLORS[9];
+  document.getElementById('nd-pd-acco').innerHTML = [
+    ['Productinformatie',`<p>Met deze ${(p.shortTitle||p.title).toLowerCase()} van ${p.brand} ga je voor een moderne stijl en optimaal comfort.</p>
+      <ul><li>Hoogwaardige kwaliteit</li><li>Moderne pasvorm</li><li>Zacht en ademend</li><li>Perfect voor casual en smart-casual looks</li></ul>`,true],
+    ['Specificaties',`<ul><li>Merk: ${p.brand}</li><li>Type: ${p.shortTitle||p.title}</li><li>Categorie: ${p.category}</li><li>Materiaal: 97% katoen, 3% elastaan</li></ul>`],
+    ['Verzending &amp; retourneren','<p>Gratis verzending vanaf €20. 30 dagen bedenktijd, retour eenvoudig via je account.</p>'],
+    ['Reviews (12)','<p>★ 4.6/5 op basis van 12 reviews.</p>']
+  ].map(([t,b,o])=>`<div class="ac${o?' open':''}"><h4 onclick="this.parentElement.classList.toggle('open')">${t}<span class="cv">▾</span></h4><div class="bd">${b}</div></div>`).join('');
+  document.getElementById('nd-pd-also').innerHTML = same.concat(POOL).slice(0,5).map(ndCard).join('');
+}
+
 renderNav();renderJump();
 heroItems=POOL.slice(0,10);renderHero();restartHero();
 renderFlash();renderRows();
+renderNdNav();renderNdVertical();renderNdHero();ndRestartHero();
 </script>
 </body>
 </html>

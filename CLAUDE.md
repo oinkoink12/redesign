@@ -28,8 +28,19 @@ dezelfde echte data. Zusterrepo's: [`firesale`](../firesale),
     adviesprijs/`!`-prijs), Kleur/Geslacht/Maat-selects, CTA "Ik neem er
     1!", USP's, verzendblok, Praat mee/Hou ik van/Deel, Productinformatie
     + Specificaties, aanbevolen-rijen. Bereikbaar vanaf elke kaart + hero.
-  - **Toggle** Huidige site ⇄ Nieuw design (`localStorage` `fr-mode`);
-    de **nieuw-design-kant (`#site-new`) is nog een placeholder**.
+  - **Toggle** Huidige site ⇄ Nieuw design (`localStorage` `fr-mode`).
+- **Nieuw design is af** in `#site-new` (eigen `nd-`-CSS, eigen
+  `#nv-vertical/#nv-brand/#nv-pdp`, gedeelde `body.v-*`-routing + state +
+  data + `openBrand/openPDP/goVertical`). Naar 3 mockups: luchtige
+  vertical (donkere topbar, gecentreerde zoekbalk, peach hero met
+  zwevende split deal-kaart + auto-rotatie, "Direct naar"-chips,
+  lifestyle-tegels, per-merk-blokken), flashpage/merk-detail
+  (peach-banner, in/uitklapbare filter-sidebar, sorteerbare 3-koloms
+  grid, blauwe newsletter, "Eerder bekeken"), en PDP (gestapelde
+  galerij + thumbs, prijsblok met `-X%`, klikbare maatknoppen,
+  accordions). Teksten bewust NL i.p.v. de Engelse mockup-labels;
+  hero/banner gebruiken productfoto's met tint-overlay (geen aparte
+  lifestyle-assets in de dataset).
 - `data.js` — ~98 producten hergebruikt uit de firesale-dataset
   (`window.PRODUCTS`); slechts 2 Fashion-merken (Lacoste, McGregor, 9
   items) → flow klopt, alleen dunner gevuld dan de echte site.
