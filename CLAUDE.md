@@ -12,6 +12,17 @@ dezelfde echte data. Zusterrepo's: [`firesale`](../firesale),
 
 ## Status (laatste stand)
 
+- **iBOOD-homepage is het startpunt** (gedeeld door beide designs):
+  `#view-home`/`#nv-home` met gele "Aanvul Alert!"-promobanner, vaste
+  hero-deal ("Deal X|N", handmatige ‹/›, geen auto-rotatie) en
+  categoriebanden (Fashion/Sport/Elektronica → Fashion-vertical, want
+  dataset is alleen Fashion). Router: `home` (geen body-class) →
+  `v-vertical`/`v-brand`/`v-pdp` via `setView()`; `goHome()` (logo +
+  niet-Fashion-nav + breadcrumb Home), `goVertical()` (nav Fashion +
+  breadcrumb Fashion). **Auto-rotatie overal verwijderd** (homepage- én
+  vertical-hero, beide designs).
+- Live op Vercel: redesign-delta-smoky.vercel.app (push `main` =
+  auto-deploy).
 - **Huidige-site-replica is af** in `index.html`, in de iBOOD-stijlgids
   (palet `--primary:#fc5628`, `--ink:#1e0033`, …) + **Stabil Grotesk**
   (`fonts/`). Werkende flow met view-router (`state.view`):
