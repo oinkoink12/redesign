@@ -183,22 +183,26 @@ body.v-pdp #view-pdp,body.v-pdp #nv-pdp{display:block}
   radial-gradient(60% 90% at 80% 10%,rgba(255,255,255,.5),transparent),
   radial-gradient(circle at 10% 90%,rgba(255,255,255,.35),transparent),var(--ndpeach)}
 .nd-hero::after{content:"";position:absolute;inset:0;background-image:repeating-radial-gradient(circle at 85% 30%,rgba(255,255,255,.12) 0 1px,transparent 1px 22px);pointer-events:none}
-.nd-hero .wrap{display:grid;grid-template-columns:1fr 1.05fr;gap:30px;padding:48px 22px;align-items:center;position:relative}
+.nd-hero .wrap{position:relative;padding:44px 22px 96px}
+.nd-hero-row{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
 .nd-hero h1{font-size:46px;font-weight:800;letter-spacing:-.02em}
 .nd-hero .sub{font-size:16px;color:#7a6a55;margin:10px 0 22px}
-.nd-deal{background:#fff;border-radius:18px;box-shadow:0 18px 50px rgba(29,19,64,.16);display:grid;grid-template-columns:1fr 1.1fr;overflow:hidden;position:relative}
-.nd-deal .dl{position:relative;background:var(--ndsoft);display:flex;align-items:center;justify-content:center;padding:26px;min-height:260px}
-.nd-deal .dl img{max-height:230px;object-fit:contain}
+.nd-sfeer{position:relative;height:300px;border-radius:18px;overflow:hidden;background:linear-gradient(135deg,#7fb0d6,#e9a9b8)}
+.nd-sfeer img{width:100%;height:100%;object-fit:cover;display:block}
+.nd-sfeer .ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.85);font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.nd-deal{position:relative;margin:-64px auto 0;max-width:900px;background:#fff;border-radius:18px;box-shadow:0 18px 50px rgba(29,19,64,.16);display:grid;grid-template-columns:300px 1fr;overflow:hidden}
+.nd-deal .dl{position:relative;background:var(--ndsoft);display:flex;align-items:center;justify-content:center;padding:24px}
+.nd-deal .dl img{max-height:240px;max-width:100%;object-fit:contain}
 .nd-deal .tm{position:absolute;top:14px;left:14px;background:#fff;border:1px solid var(--ndline);color:var(--ndink);font-size:11px;font-weight:700;padding:5px 11px;border-radius:999px}
-.nd-deal .di{padding:22px 24px;display:flex;flex-direction:column}
+.nd-deal .di{padding:26px 30px;display:flex;flex-direction:column;justify-content:center}
 .nd-deal .blg{font-weight:800;font-size:13px;color:var(--ndnavy);text-transform:uppercase;letter-spacing:.04em}
-.nd-deal .soc{display:flex;gap:8px;font-size:11px;color:var(--ndmut);margin:8px 0 12px}
+.nd-deal .soc{display:flex;gap:8px;font-size:11px;color:var(--ndmut);margin:9px 0 12px}
 .nd-deal .soc span{background:var(--ndsoft);padding:5px 10px;border-radius:999px;font-weight:600}
-.nd-deal h3{font-size:20px;font-weight:800;line-height:1.25;margin-bottom:8px}
+.nd-deal h3{font-size:22px;font-weight:800;line-height:1.25;margin-bottom:10px}
 .nd-deal .adv{font-size:12px;color:var(--ndmut);margin-bottom:2px}
-.nd-deal .nd-pr{margin:2px 0 16px}
-.nd-deal .nd-btn{align-self:flex-start}
-.nd-deal .narr{position:absolute;right:16px;bottom:16px;width:38px;height:38px;border-radius:50%;background:var(--ndnavy);color:#fff;border:none;font-size:16px;cursor:pointer;opacity:.9}
+.nd-deal .nd-pr{margin:2px 0 18px}
+.nd-deal .crow{display:flex;align-items:center;gap:12px}
+.nd-deal .narr{width:40px;height:40px;border-radius:50%;background:var(--ndnavy);color:#fff;border:none;font-size:16px;cursor:pointer;opacity:.9;flex:0 0 auto}
 .nd-deal .narr:hover{opacity:1}
 
 .nd-pr{font-weight:800;color:var(--primary);white-space:nowrap}
@@ -326,8 +330,8 @@ body.v-pdp #view-pdp,body.v-pdp #nv-pdp{display:block}
 .nd-acco .ac ul{margin:8px 0 0 18px}
 .nd-also{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
 
-@media(max-width:980px){.nd-hero .wrap,.nd-pdp,.nd-bn .wrap,.nd-news .wrap{grid-template-columns:1fr}
-  .nd-deal{grid-template-columns:1fr}.nd-block{grid-template-columns:1fr}.nd-list{grid-template-columns:1fr}
+@media(max-width:980px){.nd-hero-row,.nd-pdp,.nd-bn .wrap,.nd-news .wrap{grid-template-columns:1fr}
+  .nd-deal{grid-template-columns:1fr;margin-top:24px}.nd-sfeer{height:220px}.nd-block{grid-template-columns:1fr}.nd-list{grid-template-columns:1fr}
   .nd-side{display:none}.nd-tiles,.nd-bgrid,.nd-grid{grid-template-columns:repeat(2,1fr)}
   .nd-also{grid-template-columns:repeat(3,1fr)}.nd-foot .wrap,.nd-svc .wrap{grid-template-columns:1fr}
   .nd-nav,.nd-top{display:none}.nd-rt{position:static}}
@@ -561,9 +565,13 @@ body.v-pdp #view-pdp,body.v-pdp #nv-pdp{display:block}
   <!-- ===== NEW: VERTICAL ===== -->
   <div id="nv-vertical">
     <section class="nd-hero"><div class="wrap">
-      <div class="nd-hero-t"><h1>Fashion</h1>
-        <p class="sub" id="nd-hero-sub"></p>
-        <button class="nd-btn" onclick="document.getElementById('nd-brands').scrollIntoView({behavior:'smooth'})">Bekijk alle deals</button></div>
+      <div class="nd-hero-row">
+        <div class="nd-hero-t"><h1>Fashion</h1>
+          <p class="sub" id="nd-hero-sub"></p>
+          <button class="nd-btn" onclick="document.getElementById('nd-brands').scrollIntoView({behavior:'smooth'})">Bekijk alle deals</button></div>
+        <div class="nd-sfeer"><span class="ph">sfeerbeeld</span>
+          <img src="assets/sfeer-fashion.png" alt="Fashion sfeerbeeld" onerror="this.remove()"></div>
+      </div>
       <div class="nd-deal" id="nd-deal"></div>
     </div></section>
     <div class="wrap">
@@ -664,7 +672,9 @@ body.v-pdp #view-pdp,body.v-pdp #nv-pdp{display:block}
 <script>
 const PRODUCTS = window.PRODUCTS || [];
 const FASHION = PRODUCTS.filter(p => p.category === 'Fashion');
-const POOL = FASHION.length >= 8 ? FASHION : PRODUCTS; // genoeg om te tonen
+const POOL = FASHION.length >= 8 ? FASHION : PRODUCTS; // Fashion-vertical
+const _gen = PRODUCTS.filter(p => p.category !== 'Fashion');
+const GEN = _gen.length ? _gen : PRODUCTS; // homepage = niet-Fashion deals
 const NAV = ['Elektronica','Huishoudelijk','Wonen','Doe het zelf','Fashion','Bulk','Outdoor','Extra','Alle Deals'];
 const brandsOf = list => [...new Set(list.map(p => p.brand))];
 
@@ -682,7 +692,8 @@ function card(p,opts){opts=opts||{};
   </article>`;
 }
 
-let state = { view:'home', brand:null };
+let state = { view:'home', brand:null, flashList:null, flashLabel:null };
+function listItems(){return state.flashList ? state.flashList : POOL.filter(p=>p.brand===state.brand);}
 
 function renderNav(){document.getElementById('mainnav').innerHTML =
   NAV.map(l=>`<a href="#" class="${l==='Fashion'?'active':''}" onclick="${l==='Fashion'?'goVertical()':'goHome()'};return false">${l}</a>`).join('');}
@@ -741,7 +752,7 @@ function side(){
     <div class="grp"><h4>Voorraad <span>▾</span></h4><div class="chips"><span class="chip on">Beschikbaar</span><span class="chip">Uitverkocht</span></div></div>`;
 }
 function renderGrid(){
-  let items=POOL.filter(p=>p.brand===state.brand);
+  let items=listItems();
   const s=document.getElementById('sort').value;
   if(s==='asc')items=items.slice().sort((a,b)=>a.salePrice-b.salePrice);
   if(s==='desc')items=items.slice().sort((a,b)=>b.salePrice-a.salePrice);
@@ -751,12 +762,20 @@ function renderGrid(){
   document.getElementById('count2').textContent = n+' van de '+n+' producten';
 }
 function openBrand(b){
-  state.view='brand';state.brand=b;
+  state.brand=b;state.flashList=null;state.flashLabel=null;
+  _openListing(b);
+}
+function openFlash(){
+  state.brand=null;state.flashList=GEN;state.flashLabel='Alle deals';
+  _openListing('Alle deals');
+}
+function _openListing(label){
+  state.view='brand';
   setView('v-brand');
-  document.getElementById('bc-brand').textContent=b;
-  document.getElementById('bn-lg').textContent=b;
-  document.getElementById('bn-name').textContent=b;
-  side();renderGrid();renderNdBrand(b);window.scrollTo({top:0});
+  document.getElementById('bc-brand').textContent=label;
+  document.getElementById('bn-lg').textContent=label;
+  document.getElementById('bn-name').textContent=label;
+  side();renderGrid();renderNdBrand(label);window.scrollTo({top:0});
 }
 function setView(cls){['v-vertical','v-brand','v-pdp'].forEach(c=>document.body.classList.remove(c));if(cls)document.body.classList.add(cls);}
 function goHome(){state.view='home';setView(null);window.scrollTo({top:0});}
@@ -836,8 +855,10 @@ function renderNdHero(){const p=POOL[ndHeroIdx];if(!p)return;
       <div class="soc"><span>💬 Praat mee 1</span><span>↗ Deel</span><span>♡ Hou ik van</span></div>
       <h3>${p.title}</h3>
       <div class="adv">${advies(p.price)}</div>${ndPrice(p.salePrice)}
-      <button class="nd-btn" onclick="event.stopPropagation();openPDP('${esc(p.id)}')">Bekijk deal</button>
-      <button class="narr" onclick="event.stopPropagation();ndHeroNav(1)">›</button></div>`;
+      <div class="crow">
+        <button class="nd-btn" onclick="openPDP('${esc(p.id)}')">Bekijk deal</button>
+        <button class="narr" onclick="ndHeroNav(1)" title="Volgende deal">›</button>
+      </div></div>`;
 }
 function ndHeroNav(d){ndHeroIdx=(ndHeroIdx+d+POOL.length)%POOL.length;renderNdHero();}
 function ndRestartHero(){clearInterval(ndHeroTimer);} /* geen auto-rotatie meer */
@@ -888,7 +909,7 @@ function renderNdSide(){
     grp('Voorraad',['Beschikbaar','Uitverkocht'].map((x,i)=>opt(x,i===0)).join(''));
 }
 function renderNdGrid(){
-  let items=POOL.filter(p=>p.brand===state.brand);
+  let items=listItems();
   const s=document.getElementById('nd-sort').value;
   if(s==='asc')items=items.slice().sort((a,b)=>a.salePrice-b.salePrice);
   if(s==='desc')items=items.slice().sort((a,b)=>b.salePrice-a.salePrice);
@@ -896,11 +917,13 @@ function renderNdGrid(){
   document.getElementById('nd-count').textContent = items.length+' results';
 }
 function renderNdBrand(b){
-  const items=POOL.filter(p=>p.brand===b);
+  const items=listItems();
   document.getElementById('nd-bc').textContent=b;
   document.getElementById('nd-bn-chip').innerHTML=`👕 ${b} <span class="dd">Nog 6 dagen</span>`;
   document.getElementById('nd-bn-h').textContent=b;
-  document.getElementById('nd-bn-p').textContent='Topdeals van '+b+' tegen bodemprijzen — zolang de voorraad strekt.';
+  document.getElementById('nd-bn-p').textContent= state.flashList
+    ? 'Alle topdeals tegen bodemprijzen — zolang de voorraad strekt.'
+    : 'Topdeals van '+b+' tegen bodemprijzen — zolang de voorraad strekt.';
   if(items[0])document.getElementById('nd-bn-pic').src=items[0].imageUrl;
   renderNdSide();renderNdGrid();
   document.getElementById('nd-seen').innerHTML = PRODUCTS.slice(0,5).map(ndCard).join('');
@@ -935,17 +958,18 @@ function renderNdPDP(p){
 
 /* ===================== iBOOD HOMEPAGE (gedeeld door beide designs) ===================== */
 let homeIdx=0;
-function homeHeroNav(d){const n=POOL.length;homeIdx=(homeIdx+d+n)%n;renderHome();}
+function homeHeroNav(d){const n=GEN.length;homeIdx=(homeIdx+d+n)%n;renderHome();}
 function homeHTML(){
-  const p=POOL[homeIdx]||POOL[0];const n=POOL.length;
-  const alts=POOL.filter((_,i)=>i!==homeIdx).slice(0,2);
-  const bands=[['Fashion','#43506b'],['Sport','#6b5b4a'],['Elektronica','#2f3b57']];
+  const p=GEN[homeIdx]||GEN[0];const n=GEN.length;
+  const alts=GEN.filter((_,i)=>i!==homeIdx).slice(0,2);
+  const cats=[...new Set(GEN.map(x=>x.category))].slice(0,3);
+  const cols=['#43506b','#6b5b4a','#2f3b57'];
   return `
   <div class="hp-bar"><span class="b1">≡</span> <a>🎨 themes</a></div>
   <div class="hp-promo">
     <h2>Aanvul Alert! <span class="pen">✎</span></h2>
     <p>Pak wat je pakken kan!</p>
-    <button class="pbtn" onclick="goVertical()">Bekijk alle ${PRODUCTS.length} deals →</button>
+    <button class="pbtn" onclick="openFlash()">Bekijk alle ${GEN.length} deals →</button>
     <div class="burst">%</div><div class="art">🛒</div>
   </div>
   <div class="hp-hero">
@@ -955,14 +979,14 @@ function homeHTML(){
     <div class="grid">
       <div class="stage">
         <img src="${p.imageUrl}" alt="${p.title}" onerror="this.style.visibility='hidden'">
-        <div class="alts">${alts.map(a=>`<img src="${a.imageUrl}" onclick="homeHeroNav(${POOL.indexOf(a)-homeIdx})" onerror="this.style.display='none'">`).join('')}</div>
+        <div class="alts">${alts.map(a=>`<img src="${a.imageUrl}" onclick="homeHeroNav(${GEN.indexOf(a)-homeIdx})" onerror="this.style.display='none'">`).join('')}</div>
       </div>
       <div class="info">
         <div class="brand">${p.brand}</div>
         <h1>${p.title}</h1>
-        <div class="tag">Nieuwe garderobe? Check!</div>
+        <div class="tag">Pak 'm voordat ie weg is!</div>
         <div class="ucard">
-          <ul><li>Casual regular fit</li><li>Topdeal uit de collectie</li><li>Zolang de voorraad strekt</li></ul>
+          <ul><li>Topdeal van de dag</li><li>Scherpste prijs van Europa</li><li>Zolang de voorraad strekt</li></ul>
           <div class="adv">${advies(p.price)}</div>
           ${priceEl(p.salePrice)}
         </div>
@@ -973,10 +997,10 @@ function homeHTML(){
       </div>
     </div>
   </div>
-  ${bands.map(([t,c],i)=>`<div class="hp-band" style="background:${c}">
-     <img src="${(POOL[i%n]||p).imageUrl}" onerror="this.style.display='none'">
+  ${cats.map((t,i)=>`<div class="hp-band" style="background:${cols[i]||'#43506b'}">
+     <img src="${(GEN.find(x=>x.category===t)||p).imageUrl}" onerror="this.style.display='none'">
      <h2>${t} <span class="pen">✎</span></h2>
-     <button class="bbtn" onclick="goVertical()">Bekijk alle deals →</button></div>`).join('')}`;
+     <button class="bbtn" onclick="openFlash()">Bekijk alle deals →</button></div>`).join('')}`;
 }
 function renderHome(){['hp-c','hp-n'].forEach(id=>{const el=document.getElementById(id);if(el)el.innerHTML=homeHTML();});}
 
