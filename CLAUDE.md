@@ -1,58 +1,54 @@
-# FASHION-REDESIGN
+# FASHION-REDESIGN  (GitHub-repo: oinkoink12/redesign)
 
 > **Push nooit automatisch naar GitHub — wacht altijd op een expliciete opdracht van de gebruiker.**
 
 ## Wat is dit
 
-Een **redesign-concept voor de iBOOD Fashion-vertical**. De pagina toont de
-**huidige iBOOD.com-look als basis**, met een **toggle** die omschakelt
-naar het **nieuwe design**. Zo zijn oud en nieuw direct vergelijkbaar op
-dezelfde echte data.
+Redesign-concept voor de **iBOOD Fashion-vertical**. Eén `index.html` toont
+de **huidige iBOOD.com-look** als basis met een **toggle** (rechtsonder)
+naar het **nieuwe design**, zodat oud en nieuw direct vergelijkbaar zijn op
+dezelfde echte data. Zusterrepo's: [`firesale`](../firesale),
+[`trapprijs`](../trapprijs) (prijsmechaniek; hier draait het om design/UX).
 
-Derde project naast de zusterrepo's [`firesale`](../firesale) en
-[`trapprijs`](../trapprijs) — daar draait het om prijsmechaniek, hier om
-**design/UX van de fashion-categorie**.
+## Status (laatste stand)
 
-## Beslissingen (afgestemd met de gebruiker)
+- **Huidige-site-replica is af** in `index.html`, in de iBOOD-stijlgids
+  (palet `--primary:#fc5628`, `--ink:#1e0033`, …) + **Stabil Grotesk**
+  (`fonts/`). Werkende flow met view-router (`state.view`):
+  - **Vertical (Fashion)**: topbar, header+nav, search, "Direct naar",
+    hero-deal-carousel, "Waar vind je de beste Fashion aanbiedingen?",
+    flashblokken **per merk** (lifestyle-tegel + kaarten + "Bekijk alle N
+    deals"), nieuwsbrief, "Deze deals zijn alleen vandaag geldig",
+    "Eerder bekeken", footer.
+  - **Merk-detailpagina** (`openBrand`): breadcrumb, lifestyle-banner,
+    toolbar (`N van de N producten` + Sorteren + Verberg/Toon filters),
+    filter-sidebar (Merk functioneel/klikbaar; Categorie/Geslacht/Kleur/
+    Maat/Voorraad als facet-look), responsive grid.
+  - **PDP** (`openPDP`): galerij + thumbnails, dealbox (aftelklok/
+    adviesprijs/`!`-prijs), Kleur/Geslacht/Maat-selects, CTA "Ik neem er
+    1!", USP's, verzendblok, Praat mee/Hou ik van/Deel, Productinformatie
+    + Specificaties, aanbevolen-rijen. Bereikbaar vanaf elke kaart + hero.
+  - **Toggle** Huidige site ⇄ Nieuw design (`localStorage` `fr-mode`);
+    de **nieuw-design-kant (`#site-new`) is nog een placeholder**.
+- `data.js` — ~98 producten hergebruikt uit de firesale-dataset
+  (`window.PRODUCTS`); slechts 2 Fashion-merken (Lacoste, McGregor, 9
+  items) → flow klopt, alleen dunner gevuld dan de echte site.
+- De iBOOD **Performance/admin-strook** is bewust weggelaten (geen
+  publieke pagina).
+- Gecommit + gepusht: `main` → `origin` (`github.com/oinkoink12/redesign`).
+  Vercel is nog **niet** gekoppeld (eenmalig importeren op vercel.com,
+  zero-config, root = `/`).
 
-- **Basis-look**: de echte iBOOD.com nagemaakt (referentie = screenshots
-  die de gebruiker aanlevert).
-- **Nieuw design**: volgens mockups/inspiratie van de gebruiker
-  (screenshots).
-- **Data**: de ~100 producten uit de firesale-dataset (`PRODUCTS`,
-  `../firesale/index.html`, ~49 KB op één regel) worden hergebruikt.
-- **Toggle**: één `index.html`, zwevende schakelaar
-  "Huidige site ⇄ Nieuw design", standaard = huidige site, keuze in
-  `localStorage`. Zelfde patroon als de themaschakelaar in firesale.
+## Volgende stap (de kern)
 
-## Structuur
+De **nieuw-design-kant** bouwen achter de bestaande toggle, op dezelfde
+data en dezelfde flow (vertical → merk-detail → PDP). Input nodig van de
+gebruiker: óf nieuw-design-mockups, óf akkoord dat Claude zelf een
+redesign-voorstel maakt binnen de iBOOD-stijlgids.
 
-Statische site, **geen build-stap** (zelfde aanpak als firesale):
+## Werkwijze
 
-- `index.html` — HTML + CSS + JS in één file (volgt zodra de screenshots
-  binnen zijn).
-- `fonts/` — Stabil Grotesk (woff2/woff, Regular/Medium/Bold/Black),
-  gekopieerd uit firesale (iBOOD-styleguide-font).
-- `CLAUDE.md`, `.gitignore`.
-
-### Stijlgids-palet (uit firesale)
-
-`--primary:#fc5628` · `--primary-dark:#e2461c` · inkt `#1e0033` ·
-accentvarianten (#5ce567 / #6ea9e5) · lichte achtergrond. Font:
-`"Stabil Grotesk", -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif`.
-
-## Status
-
-Groundwork klaar (fonts, palet, dataset-bron, .gitignore). Wacht op
-screenshots van (1) huidige iBOOD.com en (2) het nieuwe design om
-`index.html` te bouwen. Nog **niets gecommit/gepusht**; GitHub-repo
-`oinkoink12/fashion-redesign` (public) wordt pas aangemaakt op expliciet
-akkoord.
-
-## Werkwijze-aandachtspunten
-
-- Lokaal bekijken: open `index.html` in de browser.
-- Online via Vercel (zero-config, output = root).
-- De `PRODUCTS`-regel is groot (~49 KB op één regel); regelgericht
-  bewerken (zie firesale/CLAUDE.md).
-- `node` lokaal beschikbaar — inline JS valideren met `vm.Script` vóór commit.
+- Statische site, **geen build-stap**. Lokaal: open `index.html`.
+- `node` lokaal beschikbaar → inline JS valideren met `vm.Script` vóór
+  commit (zie firesale/CLAUDE.md). De `data.js`-regel is groot (~49 KB).
+- Bij grote screenshots: één per bericht, JPEG, < ~2 MB (base64-inflatie).
