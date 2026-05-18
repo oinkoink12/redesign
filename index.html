@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>iBOOD Fashion — huidige site / redesign</title>
+<style>
+@font-face{font-family:"Stabil Grotesk";src:url("fonts/StabilGrotesk-Regular.woff2") format("woff2"),url("fonts/StabilGrotesk-Regular.woff") format("woff");font-weight:400;font-display:swap}
+@font-face{font-family:"Stabil Grotesk";src:url("fonts/StabilGrotesk-Medium.woff2") format("woff2"),url("fonts/StabilGrotesk-Medium.woff") format("woff");font-weight:500;font-display:swap}
+@font-face{font-family:"Stabil Grotesk";src:url("fonts/StabilGrotesk-Bold.woff2") format("woff2"),url("fonts/StabilGrotesk-Bold.woff") format("woff");font-weight:700;font-display:swap}
+@font-face{font-family:"Stabil Grotesk";src:url("fonts/StabilGrotesk-Black.woff2") format("woff2"),url("fonts/StabilGrotesk-Black.woff") format("woff");font-weight:800;font-display:swap}
+
+:root{--primary:#fc5628;--primary-dark:#e2461c;--ink:#1e0033;--accent:#5ce567;
+  --topbar:#1c0436;--header:#dfe3f7;--page:#fff;--muted:#8a8398;--line:rgba(30,0,51,.10);--maxw:1180px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Stabil Grotesk",-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--page);color:var(--ink)}
+img{display:block;max-width:100%}a{color:inherit;text-decoration:none}button{font-family:inherit;cursor:pointer}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+
+.topbar{background:var(--topbar);color:#cfc6df;font-size:11px}
+.topbar .wrap{display:flex;align-items:center;gap:22px;height:30px}
+.topbar .tb::before{content:"✓";color:var(--accent);font-weight:800;margin-right:6px}
+.topbar .lang{margin-left:auto}
+.header{background:var(--header)}
+.header .wrap{display:flex;align-items:center;gap:26px;height:60px}
+.logo{font-size:24px;font-weight:800;letter-spacing:-.02em}.logo b{color:var(--primary)}
+.mainnav{display:flex;gap:20px;font-size:14px;font-weight:500}
+.mainnav a{padding:6px 0;border-bottom:2px solid transparent;opacity:.8}
+.mainnav a:hover,.mainnav a.active{opacity:1;border-color:var(--primary)}
+.hr{margin-left:auto;display:flex;gap:14px;font-size:13px;font-weight:600}
+.pill{background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 14px}
+.searchrow{background:var(--header)}
+.searchrow .wrap{display:flex;align-items:center;gap:16px;padding-bottom:14px}
+.search{flex:1;background:#fff;border:none;border-radius:999px;padding:11px 18px;font-size:14px;font-family:inherit}
+.search::placeholder{color:var(--muted)}.ctx{color:var(--primary);font-weight:700;font-size:14px}
+
+.jump{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:12px;color:var(--muted);padding:14px 0 4px}
+.jump b{color:var(--ink)}
+.jump a{background:#f3f1fa;border-radius:999px;padding:5px 12px;font-weight:600;color:var(--ink)}
+.jump a:hover{background:#e7e3f5}
+.crumb{font-size:12px;color:var(--muted);padding:14px 0 0}
+.crumb a{color:var(--primary)}
+.vtitle{font-size:30px;font-weight:800;margin:12px 0 16px}
+
+.hero{background:#fdeee7;border-radius:16px;padding:24px;display:grid;grid-template-columns:1.1fr 1fr;gap:26px;position:relative;min-height:320px}
+.hero .stage{position:relative;background:#fff;border-radius:12px;display:flex;align-items:center;justify-content:center;padding:24px}
+.hero .stage img{max-height:270px;object-fit:contain}
+.hero .tpill{position:absolute;top:14px;left:14px;background:#fff;color:var(--primary);font-size:12px;font-weight:700;padding:5px 12px;border-radius:999px;border:1px solid var(--line)}
+.hero .soldout{position:absolute;bottom:14px;left:0;right:0;text-align:center;color:var(--primary);font-size:12px;font-weight:700}
+.hero .info{align-self:center}
+.hero .info .brand{font-size:13px;color:var(--muted);font-weight:600}
+.hero .info h1{font-size:24px;font-weight:800;line-height:1.2;margin:6px 0 12px}
+.hero .talk{display:flex;gap:10px;font-size:12px;font-weight:700;margin-bottom:14px}
+.hero .talk .t1{background:#efe9fb;padding:6px 12px;border-radius:999px}.hero .talk .t2{color:var(--primary)}
+.hero ul{list-style:none;font-size:13px;opacity:.8;display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+.hero ul li::before{content:"›";color:var(--primary);font-weight:800;margin-right:8px}
+.hero .advies{font-size:12px;color:var(--muted)}
+.hero .price{font-weight:800;color:var(--primary);margin:2px 0 16px}
+.hero .price .ex{font-size:18px;vertical-align:top;margin-right:2px}
+.hero .price .int{font-size:34px}.hero .price .cent{font-size:18px;vertical-align:super}
+.hero .arrow{position:absolute;top:50%;transform:translateY(-50%);width:38px;height:38px;border-radius:50%;background:var(--ink);color:#fff;border:none;opacity:.85}
+.hero .arrow:hover{opacity:1}.hero .arrow.prev{left:-10px}.hero .arrow.next{right:-10px}
+
+.sec-head{margin:38px 0 14px}.sec-head h2{font-size:22px;font-weight:800}
+.sec-head .sub{font-size:13px;color:var(--muted);margin-top:2px}
+
+.row{display:flex;gap:14px;overflow-x:auto;padding-bottom:6px;scrollbar-width:thin}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;transition:.16s}
+.row .card{flex:0 0 196px}
+.card:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(30,0,51,.10)}
+.card .iw{position:relative;aspect-ratio:1;background:#f6f5fa;display:flex;align-items:center;justify-content:center;padding:14px}
+.card .iw img{max-height:100%;object-fit:contain}
+.card.sold .iw{filter:grayscale(1);opacity:.6}
+.card .so{position:absolute;inset:auto 0 8px 0;text-align:center;color:var(--ink);font-weight:800;font-size:13px}
+.card .timer{position:absolute;top:9px;left:9px;background:rgba(30,0,51,.06);font-size:10px;font-weight:700;padding:3px 7px;border-radius:999px}
+.card .blogo{position:absolute;top:9px;right:9px;font-size:9px;font-weight:800;color:var(--muted);text-transform:uppercase}
+.card .bd{padding:11px 12px 13px;display:flex;flex-direction:column;flex:1}
+.card .brand{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;font-weight:700}
+.card .title{font-size:13px;font-weight:500;line-height:1.35;margin:4px 0 8px;flex:1;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.card .advies{font-size:11px;color:var(--muted)}
+.card .pl{display:flex;align-items:flex-end;justify-content:space-between;margin-top:4px}
+.card .price{font-weight:800;color:var(--primary)}
+.card .price .ex{font-size:12px;vertical-align:top;margin-right:1px}
+.card .price .int{font-size:21px}.card .price .cent{font-size:11px;vertical-align:super}
+.card .acts{color:var(--muted);font-size:13px}
+.card .buy{margin:0 12px 12px;background:var(--primary);color:#fff;border:none;border-radius:8px;padding:9px;font-size:13px;font-weight:700}
+.card .buy:hover{background:var(--primary-dark)}
+
+.fs-block{display:grid;grid-template-columns:220px 1fr;gap:14px;margin:14px 0}
+.fs-tile{border-radius:14px;padding:18px;display:flex;flex-direction:column;justify-content:space-between;min-height:240px;position:relative;color:#fff;background:linear-gradient(135deg,#3a2b57,#1e0033)}
+.fs-tile .bk{position:absolute;top:14px;right:14px}
+.fs-tile .lg{background:#fff;color:var(--ink);font-weight:800;font-size:12px;border-radius:8px;padding:6px 10px;align-self:flex-start}
+.fs-tile h3{font-size:20px;font-weight:800;margin-top:8px}
+.fs-tile .cmts{font-size:11px;opacity:.7}
+.fs-cards{display:flex;gap:14px;overflow-x:auto}.fs-cards .card{flex:0 0 176px}
+.btn{background:var(--primary);color:#fff;border:none;border-radius:999px;padding:9px 16px;font-size:13px;font-weight:700}
+.btn:hover{background:var(--primary-dark)}.btn.ghost{background:#fff;color:var(--ink);border:1px solid var(--line)}
+
+.news{background:#ece8fb;border-radius:14px;padding:22px 26px;margin:26px 0;display:flex;align-items:center;gap:26px;flex-wrap:wrap}
+.news h3{font-size:18px;font-weight:800}
+.news .field{display:flex;gap:8px;flex:1;min-width:240px}
+.news input{flex:1;border:1px solid var(--line);border-radius:999px;padding:10px 16px;font-family:inherit;font-size:13px}
+.news ul{list-style:none;font-size:12px;color:var(--muted);display:flex;flex-direction:column;gap:6px}
+
+/* brand banner + listing */
+.banner{position:relative;height:200px;background:linear-gradient(120deg,#6b5b4a,#3a2f25);overflow:hidden;display:flex;align-items:center}
+.banner .card2{background:#fff;border-radius:12px;padding:20px 24px;margin-left:max(20px,calc((100% - var(--maxw))/2 + 20px));max-width:420px;box-shadow:0 8px 24px rgba(0,0,0,.2)}
+.banner .lg2{font-weight:800;font-size:13px;color:var(--ink)}
+.banner .bp{font-size:11px;color:var(--primary);font-weight:700;margin:8px 0}
+.banner h1{font-size:26px;font-weight:800}
+.banner p{font-size:12px;color:var(--muted);margin-top:6px;line-height:1.5}
+.toolbar{display:flex;align-items:center;justify-content:space-between;padding:18px 0 10px;font-size:13px;color:var(--muted);flex-wrap:wrap;gap:12px}
+.toolbar .right{display:flex;align-items:center;gap:14px}
+.toolbar select{font-family:inherit;font-size:13px;border:1px solid var(--line);border-radius:8px;padding:7px 10px;background:#fff}
+.toolbar .tg{font-weight:700;color:var(--ink);cursor:pointer}
+.listing{display:grid;grid-template-columns:230px 1fr;gap:22px;padding-bottom:30px}
+.listing.nofilters{grid-template-columns:1fr}
+.listing.nofilters .side{display:none}
+.side .grp{border-bottom:1px solid var(--line);padding:14px 0}
+.side .grp h4{font-size:13px;font-weight:800;display:flex;justify-content:space-between;cursor:pointer}
+.side .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.side .chip{font-size:11px;border:1px solid var(--line);border-radius:7px;padding:5px 9px;background:#fff;color:var(--ink);cursor:pointer}
+.side .chip:hover{border-color:var(--primary)}
+.side .chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.side .more{font-size:11px;color:var(--primary);font-weight:700;margin-top:8px;cursor:pointer}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;align-content:start}
+.count2{text-align:center;font-size:12px;color:var(--muted);padding:18px 0}
+
+.svc{background:#fdeaea;margin-top:36px}
+.svc .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding:28px 20px;font-size:13px}
+.svc h4{font-size:15px;font-weight:800;margin-bottom:8px}.svc a{color:var(--primary)}
+.foot .wrap{padding:30px 20px;display:grid;grid-template-columns:1.4fr 1fr;gap:24px}
+.foot .logo{font-size:22px}.foot .tg{font-size:12px;color:var(--muted);margin-top:4px}
+.foot .cols{display:flex;gap:50px;font-size:12px;color:var(--muted);margin-top:18px}
+.foot .cols b{display:block;color:var(--ink);margin-bottom:8px}
+.foot .cols div div{margin:5px 0}
+.legal{border-top:1px solid var(--line);font-size:11px;color:var(--muted);text-align:center;padding:16px}
+
+.toggle-btn{position:fixed;right:20px;bottom:20px;z-index:200;background:var(--ink);color:#fff;border:none;border-radius:999px;padding:13px 20px;font-size:14px;font-weight:800;box-shadow:0 8px 22px rgba(30,0,51,.3)}
+.toggle-btn:hover{background:var(--primary)}
+#site-new{display:none;min-height:70vh;align-items:center;justify-content:center;text-align:center;padding:80px 20px}
+#site-new .np{max-width:460px}
+#site-new .np .big{font-size:46px;font-weight:800;background:linear-gradient(135deg,#fc5628,#e2461c);-webkit-background-clip:text;background-clip:text;color:transparent}
+#site-new .np p{color:var(--muted);margin-top:12px;font-size:15px}
+body.mode-new #site-current{display:none}body.mode-new #site-new{display:flex}
+#view-brand,#view-pdp{display:none}
+body.v-brand #view-vertical{display:none}body.v-brand #view-brand{display:block}
+body.v-pdp #view-vertical,body.v-pdp #view-brand{display:none}body.v-pdp #view-pdp{display:block}
+/* PDP */
+.pdp{display:grid;grid-template-columns:1.05fr 1fr;gap:34px;padding:18px 0 10px}
+.gal .big{background:#f6f5fa;border-radius:14px;aspect-ratio:1;display:flex;align-items:center;justify-content:center;padding:30px}
+.gal .big img{max-height:100%;object-fit:contain}
+.gal .thumbs{display:flex;gap:10px;margin-top:12px}
+.gal .thumbs span{width:74px;height:74px;border:1px solid var(--line);border-radius:10px;background:#f6f5fa;display:flex;align-items:center;justify-content:center;padding:8px;cursor:pointer}
+.gal .thumbs img{max-width:100%;max-height:100%;object-fit:contain}
+.pdp h1{font-size:26px;font-weight:800;line-height:1.2}
+.dealbox{background:#f3f1fa;border-radius:12px;padding:16px 18px;margin:14px 0}
+.dealbox .cd{font-size:13px;font-weight:700}.dealbox .cd b{color:var(--primary)}
+.dealbox .adv{font-size:12px;color:var(--muted);margin:8px 0 2px}
+.dealbox .price .ex{font-size:18px;vertical-align:top;margin-right:2px}
+.dealbox .price .int{font-size:34px}.dealbox .price .cent{font-size:18px;vertical-align:super}
+.dealbox .price{font-weight:800;color:var(--primary)}
+.opts{display:flex;gap:10px;margin:14px 0}
+.opts select{flex:1;font-family:inherit;font-size:13px;border:1px solid var(--line);border-radius:8px;padding:10px;background:#fff}
+.cta{width:100%;background:var(--primary);color:#fff;border:none;border-radius:10px;padding:15px;font-size:16px;font-weight:800;margin-bottom:14px}
+.cta:hover{background:var(--primary-dark)}
+.usp{list-style:none;font-size:13px;display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+.usp li::before{content:"›";color:var(--primary);font-weight:800;margin-right:8px}
+.ship{background:#f3f1fa;border-radius:10px;padding:12px 14px;font-size:12px;color:var(--muted)}
+.ship b{color:var(--ink)}
+.talk2{display:flex;gap:10px;font-size:12px;font-weight:700;margin-top:14px}
+.talk2 .a{background:#e6effb;padding:7px 12px;border-radius:999px}.talk2 .b{background:#efe9fb;padding:7px 12px;border-radius:999px}.talk2 .c{color:var(--primary);align-self:center}
+.pinfo{padding:20px 0;border-top:1px solid var(--line);margin-top:24px}
+.pinfo h3{font-size:18px;font-weight:800;margin:14px 0 6px}
+.pinfo p,.pinfo li{font-size:13px;color:var(--ink);opacity:.85;line-height:1.6}
+.pinfo ul{margin:6px 0 6px 18px}
+@media(max-width:860px){.pdp{grid-template-columns:1fr}}
+
+@media(max-width:920px){.grid{grid-template-columns:repeat(2,1fr)}.listing{grid-template-columns:1fr}.side{display:none}}
+@media(max-width:860px){.mainnav,.topbar .tb{display:none}.hero{grid-template-columns:1fr}.hero .arrow{display:none}.fs-block{grid-template-columns:1fr}.svc .wrap,.foot .wrap{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div id="site-current">
+
+  <div class="topbar"><div class="wrap">
+    <span class="tb">Dagelijks de beste deal voor de scherpste prijs</span>
+    <span class="tb">Elke dag nieuwe deals</span>
+    <span class="tb">Al 21 jaar de beste deals van Europa</span>
+    <span class="tb">Actieve community</span><span class="lang">🇳🇱 NL ▾</span>
+  </div></div>
+  <header class="header"><div class="wrap">
+    <div class="logo" style="cursor:pointer" onclick="goVertical()">iBOOD<b>.</b></div>
+    <nav class="mainnav" id="mainnav"></nav>
+    <div class="hr"><span class="pill">👤 Hoi Tim</span><span class="pill">🛒</span></div>
+  </div></header>
+  <div class="searchrow"><div class="wrap">
+    <input class="search" placeholder="Waar ben je naar op zoek?"><span class="ctx">Fashion ▾</span>
+  </div></div>
+
+  <!-- ===== VERTICAL ===== -->
+  <div id="view-vertical"><div class="wrap">
+    <div class="jump"><b>Direct naar</b><span id="jump"></span></div>
+    <h1 class="vtitle">Fashion</h1>
+    <section class="hero" id="hero">
+      <button class="arrow prev" onclick="heroNav(-1)">‹</button>
+      <button class="arrow next" onclick="heroNav(1)">›</button>
+    </section>
+    <div class="sec-head"><h2>Waar vind je de beste Fashion aanbiedingen?</h2>
+      <div class="sub">iBOOD heeft dagelijks wisselende deals op A-merken met tot 60% korting.</div></div>
+    <div id="flash"></div>
+    <div class="news"><h3>Mis nooit meer een deal!</h3>
+      <div class="field"><input placeholder="E-mailadres"><button class="btn">Aanmelden</button></div>
+      <ul><li>⚡ Extra winacties &amp; kortingscodes</li><li>🎯 Gepersonaliseerde deal-tips</li><li>📩 Dagelijks de nieuwste deals</li></ul></div>
+    <div class="sec-head"><h2>Deze deals zijn alleen vandaag geldig</h2>
+      <div class="sub">Wist je dat wij per deal gemiddeld 20% goedkoper zijn dan de rest 😀</div></div>
+    <div class="row" id="today"></div>
+    <div class="sec-head"><h2>Eerder bekeken</h2></div>
+    <div class="row" id="seen"></div>
+  </div></div>
+
+  <!-- ===== BRAND DETAIL ===== -->
+  <div id="view-brand">
+    <div class="wrap"><div class="crumb"><a href="#" onclick="goVertical();return false">Home</a> / <a href="#" onclick="goVertical();return false">Fashion</a> / <span id="bc-brand"></span></div></div>
+    <div class="banner"><div class="card2">
+      <div class="lg2" id="bn-lg"></div>
+      <div class="bp">⏱ Nog 9 uur</div>
+      <h1 id="bn-name"></h1>
+      <p>Vind de nieuwe garderobe bij elkaar en koop topdeals van dit merk tegen bodemprijzen — zolang de voorraad strekt.</p>
+    </div></div>
+    <div class="wrap">
+      <div class="toolbar">
+        <span id="tb-count"></span>
+        <div class="right">
+          <span class="tg" id="tb-toggle" onclick="toggleFilters()">⚙ Verberg filters</span>
+          <label>Sorteren
+            <select id="sort" onchange="renderGrid()">
+              <option value="rel">relevantie</option>
+              <option value="asc">prijs oplopend</option>
+              <option value="desc">prijs aflopend</option>
+            </select>
+          </label>
+        </div>
+      </div>
+      <div class="listing" id="listing">
+        <aside class="side" id="side"></aside>
+        <div class="grid" id="grid"></div>
+      </div>
+      <div class="count2" id="count2"></div>
+      <div class="news"><h3>Mis nooit meer een deal!</h3>
+        <div class="field"><input placeholder="E-mailadres"><button class="btn">Aanmelden</button></div></div>
+      <div class="sec-head"><h2>Eerder bekeken</h2></div>
+      <div class="row" id="seen2"></div>
+    </div>
+  </div>
+
+  <!-- ===== PDP ===== -->
+  <div id="view-pdp"><div class="wrap">
+    <div class="crumb"><a href="#" onclick="goVertical();return false">Home</a> / <a href="#" onclick="goVertical();return false">Fashion</a> / <span id="pd-crumb"></span></div>
+    <div class="pdp">
+      <div class="gal">
+        <div class="big"><img id="pd-img" alt="" onerror="this.style.visibility='hidden'"></div>
+        <div class="thumbs" id="pd-thumbs"></div>
+        <div class="pinfo" id="pd-info"></div>
+      </div>
+      <div class="buy">
+        <h1 id="pd-title"></h1>
+        <div class="dealbox">
+          <div class="cd">Nog <b>08:44:23</b> of tot uitverkocht</div>
+          <div class="adv" id="pd-adv"></div>
+          <div class="price" id="pd-price"></div>
+        </div>
+        <div class="opts">
+          <select id="pd-color"></select>
+          <select><option>Geslacht: Men</option></select>
+          <select id="pd-size"></select>
+        </div>
+        <button class="cta">Ik neem er 1!</button>
+        <ul class="usp"><li>Mooie regular fit</li><li>Zachte en ademende stof</li><li>Met wat stretch</li></ul>
+        <div class="ship"><b>Verwachte verzending 20 mei 2026</b><br>Verzending vanaf € 5,95</div>
+        <div class="talk2"><span class="a">💬 Praat mee</span><span class="b">❤️ Hou ik van</span><span class="c">↗ Deel deze deal</span></div>
+      </div>
+    </div>
+    <div class="sec-head"><h2>Deze gaan hard 🔥</h2></div>
+    <div class="row" id="pd-hot"></div>
+    <div class="sec-head"><h2>Bekijk ook eens 👀</h2></div>
+    <div class="row" id="pd-also"></div>
+    <div class="sec-head"><h2>Nieuw vandaag</h2></div>
+    <div class="row" id="pd-new"></div>
+  </div></div>
+
+  <section class="svc"><div class="wrap">
+    <div><h4>Service &amp; Contact</h4></div>
+    <div><h4>Snel zelf regelen?</h4>Volg je bestelling of retourneer een artikel via <a href="#">je account</a>.</div>
+    <div><h4>Kom je er niet uit?</h4>📞 020-6811388<br>✉️ customerservice@ibood.nl</div>
+  </div></section>
+  <footer class="foot"><div class="wrap">
+    <div><div class="logo">iBOOD<b style="color:var(--primary)">.</b></div><div class="tg">Dagelijkse de beste deals voor de scherpste prijs</div>
+      <div class="cols">
+        <div><b>Klantenservice</b><div>Veelgestelde vragen</div><div>Retourbeleid</div></div>
+        <div><b>iBOOD</b><div>Mis je een deal?</div><div>Hunt</div><div>Over iBOOD</div></div>
+        <div><b>Website</b><div>Algemene Voorwaarden</div><div>Privacyverklaring</div><div>Cookiebeleid</div></div>
+      </div></div>
+    <div><h3 style="font-weight:800">Mis nooit meer een deal!</h3>
+      <div class="field" style="display:flex;gap:8px;margin-top:10px"><input class="search" style="background:#fff;border:1px solid var(--line)" placeholder="E-mailadres"><button class="btn">Aanmelden</button></div>
+      <div class="tg" style="margin-top:14px;color:var(--muted);font-size:12px">🍎 App Store · ▶️ Google Play</div></div>
+  </div><div class="legal">iBOOD 2026 · 020-6811388 · customerservice@ibood.nl · KVK 34201965 · Amsterdam, Nederland</div></footer>
+</div>
+
+<div id="site-new"><div class="np">
+  <div class="big">Nieuw design</div>
+  <p>Komt hier zodra je de mockups paste — toggle, dataset en de
+     vertical→merk-detail-flow staan klaar om hergebruikt te worden.</p>
+</div></div>
+
+<button class="toggle-btn" id="toggle" onclick="toggleDesign()">✨ Nieuw design</button>
+
+<script src="data.js"></script>
+<script>
+const PRODUCTS = window.PRODUCTS || [];
+const FASHION = PRODUCTS.filter(p => p.category === 'Fashion');
+const POOL = FASHION.length >= 8 ? FASHION : PRODUCTS; // genoeg om te tonen
+const NAV = ['Elektronica','Huishoudelijk','Wonen','Doe het zelf','Fashion','Bulk','Outdoor','Extra','Alle Deals'];
+const brandsOf = list => [...new Set(list.map(p => p.brand))];
+
+const ep = n => Number(n).toFixed(2).split('.');
+function priceEl(n){const s=ep(n);return `<span class="price"><span class="ex">!</span><span class="int">${s[0]}</span><span class="cent">,${s[1]}</span></span>`;}
+const advies = n => 'Adviesprijs fabrikant € ' + Number(n).toFixed(2).replace('.',',');
+function card(p,opts){opts=opts||{};
+  return `<article class="card" style="cursor:pointer" onclick="openPDP('${String(p.id)}')">
+    <div class="iw"><span class="timer">⏱ Nog 9 uur</span><span class="blogo">${p.brand}</span>
+      <img src="${p.imageUrl}" alt="${p.shortTitle||p.title}" loading="lazy" onerror="this.style.visibility='hidden'"></div>
+    <div class="bd"><div class="brand">${p.brand}</div><div class="title">${p.title}</div>
+      <div class="advies">${advies(p.price)}</div>
+      <div class="pl">${priceEl(p.salePrice)}<span class="acts">✏️ ♡</span></div></div>
+    ${opts.buy?'<button class="buy">Bekijk deal</button>':''}
+  </article>`;
+}
+
+let state = { view:'vertical', brand:null };
+
+function renderNav(){document.getElementById('mainnav').innerHTML =
+  NAV.map(l=>`<a href="#" class="${l==='Fashion'?'active':''}" onclick="goVertical();return false">${l}</a>`).join('');}
+function renderJump(){document.getElementById('jump').innerHTML =
+  brandsOf(POOL).slice(0,8).map(b=>`<a href="#" onclick="openBrand('${b.replace(/'/g,"\\'")}');return false">${b}</a>`).join('');}
+
+let heroItems=[],heroIdx=0,heroTimer=null;
+function renderHero(){const p=heroItems[heroIdx];if(!p)return;
+  const h=document.getElementById('hero');h.querySelectorAll('.hd').forEach(e=>e.remove());
+  h.insertAdjacentHTML('beforeend',`
+    <div class="stage hd"><span class="tpill">⏱ Nog 9 uur</span>
+      <img src="${p.imageUrl}" alt="${p.title}" onerror="this.style.visibility='hidden'">
+      <span class="soldout">Nog 9 uur of tot uitverkocht</span></div>
+    <div class="info hd"><div class="brand">${p.brand}</div><h1>${p.title}</h1>
+      <div class="talk"><span class="t1">💬 Praat mee</span><span class="t2">↗ Deel deze deal</span></div>
+      <ul><li>Topdeal uit de Fashion-collectie</li><li>Zolang de voorraad strekt</li><li>Deal ${heroIdx+1}|${heroItems.length}</li></ul>
+      <div class="advies">${advies(p.price)}</div>
+      <div class="price">${priceEl(p.salePrice).replace(/^<span class="price">|<\/span>$/g,'')}</div>
+      <button class="btn" style="padding:12px 26px;font-size:15px" onclick="openPDP('${String(p.id)}')">Bekijk deal</button></div>`);
+}
+function heroNav(d){heroIdx=(heroIdx+d+heroItems.length)%heroItems.length;renderHero();restartHero();}
+function restartHero(){clearInterval(heroTimer);heroTimer=setInterval(()=>heroNav(1),6000);}
+
+function renderFlash(){
+  document.getElementById('flash').innerHTML = brandsOf(POOL).map(b=>{
+    const items=POOL.filter(p=>p.brand===b);
+    return `<div class="fs-block">
+      <div class="fs-tile">
+        <button class="btn bk" onclick="openBrand('${b.replace(/'/g,"\\'")}')">Bekijk alle ${items.length} deals</button>
+        <div><div class="lg">${b}</div><h3>${b}</h3></div>
+        <div class="cmts">💬 0 opmerkingen</div>
+      </div>
+      <div class="fs-cards">${items.slice(0,6).map(p=>card(p)).join('')}</div>
+    </div>`;
+  }).join('');
+}
+function renderRows(){
+  document.getElementById('today').innerHTML = POOL.slice(0,8).map(p=>card(p,{buy:true})).join('');
+  document.getElementById('seen').innerHTML = PRODUCTS.slice(0,10).map(p=>card(p)).join('');
+  document.getElementById('seen2').innerHTML = PRODUCTS.slice(0,8).map(p=>card(p)).join('');
+}
+
+/* ---- brand detail ---- */
+const COLORS=['Athletic Grey Marl','Black','Blue','Check Grey','Check Navy','Khaki','Light Sand','Mint Blue','Navy','Off White','Sand','White'];
+const SIZES=['XS','S','M','L','XL','2XL','30','32','34','36'];
+const SUBCATS=['Korte Broeken','Lange Broeken','Overhemden | Shirts','Zwemkleding'];
+function side(){
+  const brands=brandsOf(POOL);
+  const chips=(arr,sel)=>arr.map(x=>`<span class="chip${x===sel?' on':''}" ${sel!==undefined&&arr===brands?`onclick="openBrand('${x.replace(/'/g,"\\'")}')"`:''}>${x}</span>`).join('');
+  document.getElementById('side').innerHTML = `
+    <div class="grp"><h4>Merk <span>▾</span></h4><div class="chips">${chips(brands,state.brand)}</div></div>
+    <div class="grp"><h4>Categorieën <span>▾</span></h4><div class="chips">${SUBCATS.map(c=>`<span class="chip">${c}</span>`).join('')}</div></div>
+    <div class="grp"><h4>Geslacht <span>▾</span></h4><div class="chips"><span class="chip">Men</span><span class="chip">Women</span></div></div>
+    <div class="grp"><h4>Kleur <span>▾</span></h4><div class="chips">${COLORS.map(c=>`<span class="chip">${c}</span>`).join('')}</div><div class="more">Toon meer ▾</div></div>
+    <div class="grp"><h4>Maat <span>▾</span></h4><div class="chips">${SIZES.map(s=>`<span class="chip">${s}</span>`).join('')}</div></div>
+    <div class="grp"><h4>Voorraad <span>▾</span></h4><div class="chips"><span class="chip on">Beschikbaar</span><span class="chip">Uitverkocht</span></div></div>`;
+}
+function renderGrid(){
+  let items=POOL.filter(p=>p.brand===state.brand);
+  const s=document.getElementById('sort').value;
+  if(s==='asc')items=items.slice().sort((a,b)=>a.salePrice-b.salePrice);
+  if(s==='desc')items=items.slice().sort((a,b)=>b.salePrice-a.salePrice);
+  document.getElementById('grid').innerHTML = items.map(p=>card(p)).join('') || '<p style="color:var(--muted)">Geen producten.</p>';
+  const n=items.length;
+  document.getElementById('tb-count').textContent = n+' van de '+n+' producten';
+  document.getElementById('count2').textContent = n+' van de '+n+' producten';
+}
+function openBrand(b){
+  state.view='brand';state.brand=b;
+  document.body.classList.remove('v-pdp');
+  document.body.classList.add('v-brand');
+  document.getElementById('bc-brand').textContent=b;
+  document.getElementById('bn-lg').textContent=b;
+  document.getElementById('bn-name').textContent=b;
+  side();renderGrid();window.scrollTo({top:0});
+}
+function goVertical(){state.view='vertical';document.body.classList.remove('v-brand');document.body.classList.remove('v-pdp');window.scrollTo({top:0});}
+
+/* ---- PDP ---- */
+function openPDP(id){
+  const p = PRODUCTS.find(x => String(x.id) === String(id));
+  if(!p) return;
+  state.view='pdp';state.product=p;
+  document.body.classList.remove('v-brand');
+  document.body.classList.add('v-pdp');
+  document.getElementById('pd-crumb').textContent = p.title;
+  document.getElementById('pd-title').textContent = p.title;
+  document.getElementById('pd-img').src = p.imageUrl;
+  document.getElementById('pd-img').alt = p.title;
+  document.getElementById('pd-adv').textContent = advies(p.price);
+  document.getElementById('pd-price').innerHTML =
+    priceEl(p.salePrice).replace(/^<span class="price">|<\/span>$/g,'');
+  const same = PRODUCTS.filter(x=>x.brand===p.brand && x.id!==p.id).slice(0,4);
+  const thumbs=[p].concat(same).slice(0,4);
+  document.getElementById('pd-thumbs').innerHTML = thumbs.map(t=>
+    `<span onclick="openPDP('${String(t.id)}')"><img src="${t.imageUrl}" onerror="this.style.visibility='hidden'"></span>`).join('');
+  document.getElementById('pd-color').innerHTML =
+    '<option>Kies kleur</option>'+COLORS.map(c=>`<option>${c}</option>`).join('');
+  document.getElementById('pd-size').innerHTML =
+    '<option>Kies maat</option>'+SIZES.map(s=>`<option>${s}</option>`).join('');
+  document.getElementById('pd-info').innerHTML = `
+    <h3>Productinformatie</h3>
+    <p>Van sportief tot casual: een veelzijdig ${p.title.toLowerCase()} van ${p.brand} dat in elk detail klopt — comfortabel om te dragen en mooi van pasvorm.</p>
+    <h3>Specificaties</h3>
+    <ul><li>Merk: ${p.brand}</li><li>Type: ${p.shortTitle||p.title}</li><li>Categorie: ${p.category}</li><li>Materiaal: 97% katoen, 3% elastaan</li></ul>`;
+  document.getElementById('pd-hot').innerHTML  = POOL.slice(0,8).map(card).join('');
+  document.getElementById('pd-also').innerHTML = same.concat(POOL).slice(0,8).map(card).join('');
+  document.getElementById('pd-new').innerHTML  = PRODUCTS.slice(0,8).map(card).join('');
+  window.scrollTo({top:0});
+}
+function toggleFilters(){
+  const l=document.getElementById('listing');const off=l.classList.toggle('nofilters');
+  document.getElementById('tb-toggle').textContent = off?'⚙ Toon filters':'⚙ Verberg filters';
+}
+
+function toggleDesign(){
+  const isNew=document.body.classList.toggle('mode-new');
+  document.getElementById('toggle').textContent=isNew?'↩ Huidige site':'✨ Nieuw design';
+  try{localStorage.setItem('fr-mode',isNew?'new':'current');}catch(e){}
+  window.scrollTo({top:0});
+}
+(function(){let m='current';try{m=localStorage.getItem('fr-mode')||'current';}catch(e){}
+  if(m==='new'){document.body.classList.add('mode-new');document.getElementById('toggle').textContent='↩ Huidige site';}})();
+
+renderNav();renderJump();
+heroItems=POOL.slice(0,10);renderHero();restartHero();
+renderFlash();renderRows();
+</script>
+</body>
+</html>
