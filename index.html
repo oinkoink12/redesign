@@ -387,10 +387,9 @@ body.v-pdp #view-pdp,body.v-pdp #nv-pdp{display:block}
 .hp-hero .top{display:flex;align-items:center;gap:14px;font-size:14px;font-weight:800;margin-bottom:14px}
 .hp-hero .top .cd{color:var(--primary)}
 .hp-hero .grid{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:center}
-.hp-hero .stage{position:relative;display:flex;align-items:center;justify-content:center;gap:16px}
-.hp-hero .stage>img{max-height:340px;object-fit:contain}
-.hp-hero .alts{display:flex;flex-direction:column;gap:12px}
-.hp-hero .alts img{width:64px;height:64px;object-fit:contain;background:#fff;border-radius:10px;padding:6px;cursor:pointer}
+.hp-hero .stage{position:relative;display:flex;align-items:center;justify-content:center;min-height:340px}
+.hp-hero .stage>img{max-height:340px;max-width:90%;object-fit:contain}
+.hp-hero .cbadge{position:absolute;left:8px;bottom:8px;width:100px;height:100px;border-radius:50%;background:#cfd9ff;color:var(--ink);display:flex;align-items:center;justify-content:center;font-weight:600;font-size:14px;text-align:center;line-height:1.2;padding:10px}
 .hp-hero .info .brand{font-size:14px;color:#6a6280;font-weight:600}
 .hp-hero .info h1{font-size:30px;font-weight:800;line-height:1.18;margin:6px 0 12px}
 .hp-hero .info .tag{font-weight:700;margin-bottom:16px}
@@ -414,7 +413,7 @@ body.v-pdp #view-pdp,body.v-pdp #nv-pdp{display:block}
 .hp-band h2 .pen{font-size:14px;opacity:.6}
 .hp-band .bbtn{position:relative;margin:0 0 24px 30px;background:var(--primary);color:#fff;border:none;border-radius:10px;padding:12px 20px;font-size:14px;font-weight:700;font-family:inherit;cursor:pointer}
 .hp-band .bbtn:hover{background:var(--primary-dark)}
-@media(max-width:860px){.hp-hero{padding:24px 18px}.hp-hero .grid{grid-template-columns:1fr}.hp-hero .arr,.hp-hero .alts{display:none}.hp-promo .art{display:none}}
+@media(max-width:860px){.hp-hero{padding:24px 18px}.hp-hero .grid{grid-template-columns:1fr}.hp-hero .arr{display:none}.hp-hero .cbadge{width:72px;height:72px;font-size:11px}.hp-promo .art{display:none}}
 </style>
 </head>
 <body>
@@ -965,7 +964,6 @@ let homeIdx=0;
 function homeHeroNav(d){const n=GEN.length;homeIdx=(homeIdx+d+n)%n;renderHome();}
 function homeHTML(){
   const p=GEN[homeIdx]||GEN[0];const n=GEN.length;
-  const alts=GEN.filter((_,i)=>i!==homeIdx).slice(0,2);
   const cats=[...new Set(GEN.map(x=>x.category))].slice(0,3);
   const cols=['#43506b','#6b5b4a','#2f3b57'];
   return `
@@ -983,7 +981,7 @@ function homeHTML(){
     <div class="grid">
       <div class="stage">
         <img src="${p.imageUrl}" alt="${p.title}" onerror="this.style.visibility='hidden'">
-        <div class="alts">${alts.map(a=>`<img src="${a.imageUrl}" onclick="homeHeroNav(${GEN.indexOf(a)-homeIdx})" onerror="this.style.display='none'">`).join('')}</div>
+        <div class="cbadge" onclick="homeHeroNav(1)">${p.category}</div>
       </div>
       <div class="info">
         <div class="brand">${p.brand}</div>
