@@ -12,68 +12,105 @@ dezelfde echte data. Zusterrepo's: [`firesale`](../firesale),
 
 ## Status (laatste stand)
 
-- **iBOOD-homepage is het startpunt** (gedeeld door beide designs):
-  `#view-home`/`#nv-home` met gele "Aanvul Alert!"-promobanner, vaste
-  hero-deal ("Deal X|N", handmatige ‹/›, geen auto-rotatie) en
-  categoriebanden. Router: `home` (geen body-class) →
-  `v-vertical`/`v-brand`/`v-pdp` via `setView()`; `goHome()` (logo +
+- **Live**: https://redesign-delta-smoky.vercel.app/ (zero-config Vercel,
+  push naar `main` = auto-deploy).
+- **Beide designs af en volledig functioneel** op dezelfde data + dezelfde
+  flow. Toggle rechtsonder wisselt huidige site ⇄ nieuw design
+  (`localStorage` `fr-mode`).
+
+### Routing & startpunt
+- App opent op de **iBOOD-homepage** (gedeeld), niet direct op Fashion.
+  Views: `home` (geen body-class) → `v-vertical` → `v-brand` → `v-pdp`,
+  geschakeld via `setView(cls)`. Functies: `goHome()` (logo +
   niet-Fashion-nav + breadcrumb Home), `goVertical()` (nav Fashion +
-  breadcrumb Fashion). **Auto-rotatie overal verwijderd** (homepage- én
-  vertical-hero, beide designs).
-- **Homepage = niet-Fashion deals** (`GEN` = `PRODUCTS` zonder Fashion);
-  Fashion-vertical = `POOL` (Fashion) → andere producten/PDP's. Homepage
-  "Bekijk alle deals" (promo + banden) → `openFlash()`: flash-detail/
-  listing-view via `listItems()` (schakelt merk-filter ↔ flash-lijst),
-  niet meer een PDP. Hero "Bekijk deal" → PDP van die deal.
-- **Nieuw-design vertical-hero herbouwd**: tweekoloms-rij (tekst /
-  sfeerbeeld `assets/sfeer-fashion.png`, fallback-gradient + placeholder)
-  + gecentreerde deal-kaart eronder (uitlijning gefixt, geen overloop).
-- Live op Vercel: redesign-delta-smoky.vercel.app (push `main` =
-  auto-deploy).
-- **Huidige-site-replica is af** in `index.html`, in de iBOOD-stijlgids
-  (palet `--primary:#fc5628`, `--ink:#1e0033`, …) + **Stabil Grotesk**
-  (`fonts/`). Werkende flow met view-router (`state.view`):
-  - **Vertical (Fashion)**: topbar, header+nav, search, "Direct naar",
-    hero-deal-carousel, "Waar vind je de beste Fashion aanbiedingen?",
-    flashblokken **per merk** (lifestyle-tegel + kaarten + "Bekijk alle N
-    deals"), nieuwsbrief, "Deze deals zijn alleen vandaag geldig",
-    "Eerder bekeken", footer.
-  - **Merk-detailpagina** (`openBrand`): breadcrumb, lifestyle-banner,
-    toolbar (`N van de N producten` + Sorteren + Verberg/Toon filters),
-    filter-sidebar (Merk functioneel/klikbaar; Categorie/Geslacht/Kleur/
-    Maat/Voorraad als facet-look), responsive grid.
-  - **PDP** (`openPDP`): galerij + thumbnails, dealbox (aftelklok/
-    adviesprijs/`!`-prijs), Kleur/Geslacht/Maat-selects, CTA "Ik neem er
-    1!", USP's, verzendblok, Praat mee/Hou ik van/Deel, Productinformatie
-    + Specificaties, aanbevolen-rijen. Bereikbaar vanaf elke kaart + hero.
-  - **Toggle** Huidige site ⇄ Nieuw design (`localStorage` `fr-mode`).
-- **Nieuw design is af** in `#site-new` (eigen `nd-`-CSS, eigen
-  `#nv-vertical/#nv-brand/#nv-pdp`, gedeelde `body.v-*`-routing + state +
-  data + `openBrand/openPDP/goVertical`). Naar 3 mockups: luchtige
-  vertical (donkere topbar, gecentreerde zoekbalk, peach hero met
-  zwevende split deal-kaart + auto-rotatie, "Direct naar"-chips,
-  lifestyle-tegels, per-merk-blokken), flashpage/merk-detail
-  (peach-banner, in/uitklapbare filter-sidebar, sorteerbare 3-koloms
-  grid, blauwe newsletter, "Eerder bekeken"), en PDP (gestapelde
-  galerij + thumbs, prijsblok met `-X%`, klikbare maatknoppen,
-  accordions). Teksten bewust NL i.p.v. de Engelse mockup-labels;
-  hero/banner gebruiken productfoto's met tint-overlay (geen aparte
-  lifestyle-assets in de dataset).
-- `data.js` — ~98 producten hergebruikt uit de firesale-dataset
-  (`window.PRODUCTS`); slechts 2 Fashion-merken (Lacoste, McGregor, 9
-  items) → flow klopt, alleen dunner gevuld dan de echte site.
+  breadcrumb Fashion), `openBrand(b)` / `openFlash()` / `openPDP(id)`.
+- IDs huidige replica: `#view-home/#view-vertical/#view-brand/#view-pdp`.
+  IDs nieuw design: `#nv-home/#nv-vertical/#nv-brand/#nv-pdp`. CSS-routing
+  toont in beide sites de juiste view via dezelfde body-class.
+- **Geen auto-rotatie meer** ergens — alleen handmatige ‹/›-pijlen.
+
+### Data-split (cruciaal)
+- `POOL` = Fashion-producten (9, merken Lacoste/Mcgregor) — voedt de
+  **Fashion-vertical**.
+- `GEN` = `PRODUCTS.filter(p => p.category !== 'Fashion')` (~89, alle
+  andere categorieën) — voedt de **homepage** (hero + banden + flash-
+  listing vanaf homepage). Hierdoor leiden klikken vanaf de homepage
+  altijd naar andere PDP's dan via de Fashion-vertical.
+
+### Homepage (`#view-home` / `#nv-home`, gedeeld component)
+- Renderer: `renderHome()` injecteert identieke HTML in beide containers
+  (`hp-c` en `hp-n`). Bevat: gele **"Aanvul Alert!"**-promobanner, vaste
+  hero-deal-kaart ("Deal X|N · Nog 7 uur", productbeeld + lichtblauwe
+  **categorie-badge** linksonder zoals de "Gigabit"-badge in de mockup,
+  brand + titel + USP-bullets + adviesprijs + `!`-prijs, **Bekijk deal**
+  → `openPDP` + **Praat mee 2**, ‹/›-pijlen op de zijkanten van de hero),
+  en categoriebanden voor de daadwerkelijk aanwezige categorieën.
+- **"Bekijk alle deals"-knoppen** (promo + banden) → `openFlash()`:
+  generaliseerde listing-view (zelfde markup als brand-detail) die `GEN`
+  toont met label "Alle deals". Schakelt via `state.flashList` + helper
+  `listItems()` (= `state.flashList ?? POOL.filter(brand)`).
+
+### Nieuw-design vertical-hero (`.nd-hero`)
+- **Full-bleed sfeerbeeld-achtergrond**: `assets/sfeer-fashion.png`
+  (Lacoste-model, ~605 KB). Img absolute inset:0 over een gradient-
+  placeholder met "SFEERBEELD"-tekst; bij errorload verdwijnt de img
+  (`onerror="this.remove()"`) en zie je de placeholder. **Scrim**
+  (`linear-gradient` 90deg) maakt links leesbaar voor titel/CTA.
+- "Fashion" + "Lacoste maakt indruk deze week." + oranje **Bekijk alle
+  deals** linksboven over de foto.
+- **Brede deal-kaart** (`.nd-deal`, full wrap-width, `grid 42% / 1fr`)
+  die over de onderkant van de hero valt (`margin:32px 0 -64px`).
+  Links: timer-pill + productbeeld. Rechts: merk-chip + social-pills
+  (Praat mee/Deel/Hou ik van) in dhead, titel, korte omschrijving,
+  adviesprijs, prijs, **full-width oranje "Bekijk deal"-knop**, en een
+  navy ronde `›`-pijl absoluut op de rechterrand (vertically centered).
+- `.nd-chips{padding-top:84px}` om ruimte te geven onder de overlap.
+
+### Huidige-site-replica (in dezelfde stijlgids `--primary:#fc5628`,
+`--ink:#1e0033`, font Stabil Grotesk uit `fonts/`)
+- **Vertical (Fashion)**: topbar, header+nav, search, "Direct naar",
+  hero-deal, flashblokken per merk, nieuwsbrief, "Eerder bekeken",
+  footer.
+- **Merk-detail** (`openBrand`): breadcrumb, lifestyle-banner, toolbar
+  (`N van de N producten` + Sorteren + Verberg/Toon filters), filter-
+  sidebar (Merk klikbaar; rest cosmetisch), responsive grid.
+- **PDP** (`openPDP`): galerij + thumbnails, dealbox (aftelklok +
+  adviesprijs + `!`-prijs), Kleur/Geslacht/Maat-selects, CTA "Ik neem
+  er 1!", USP's, verzendblok, social-rij, Productinfo + Specificaties,
+  aanbevolen-rijen.
+
+### Nieuw design (extra t.o.v. replica)
+- Eigen `nd-`-CSS scoped onder `#site-new`. Zelfde state + data + entry-
+  points (`openBrand`/`openPDP`/`goVertical`/`goHome`/`openFlash`).
+- **Flashpage/merk-detail** (`renderNdBrand`): peach-banner met chip,
+  filter-sidebar (in/uitklapbaar, "Alles wissen"), sorteerdropdown,
+  3-koloms grid, blauwe newsletter, "Eerder bekeken"-rij. Sidebar-merk
+  is functioneel/klikbaar (resetset `flashList=null`).
+- **PDP** (`renderNdPDP`): gestapelde galerij + thumbnails, brand-caps,
+  titel, omschrijving, rating, prijsblok met dynamisch `-X%`-badge,
+  klikbare maatknoppen (S/M/L/XL/XXL), kleurstaal, voorraad, full-width
+  **In winkelmandje**-CTA + hartje, USP's, accordions
+  (Productinformatie open, Specs/Verzending/Reviews dicht), "Dit vind
+  je misschien ook leuk"-rij.
+- **Bewuste keuzes**: teksten NL (i.p.v. mockup-Engels), categorie-
+  badge in homepage-hero i.p.v. losse alt-thumbnails (die zagen er
+  rommelig uit op 64×64).
+
+### Repo & assets
+- `index.html` (één bestand, HTML+CSS+JS), `data.js` (~98 producten als
+  `window.PRODUCTS`, hergebruikt uit firesale), `fonts/` (Stabil Grotesk
+  woff/woff2), `assets/sfeer-fashion.png` (Lacoste-sfeerbeeld).
+- Inline JS valideren vóór commit: `node -e "..."` met `vm.Script` op het
+  laatste `<script>`-blok (zie firesale/CLAUDE.md voor het patroon).
 - De iBOOD **Performance/admin-strook** is bewust weggelaten (geen
   publieke pagina).
-- Gecommit + gepusht: `main` → `origin` (`github.com/oinkoink12/redesign`).
-  Vercel is nog **niet** gekoppeld (eenmalig importeren op vercel.com,
-  zero-config, root = `/`).
 
-## Volgende stap (de kern)
+## Volgende stap
 
-De **nieuw-design-kant** bouwen achter de bestaande toggle, op dezelfde
-data en dezelfde flow (vertical → merk-detail → PDP). Input nodig van de
-gebruiker: óf nieuw-design-mockups, óf akkoord dat Claude zelf een
-redesign-voorstel maakt binnen de iBOOD-stijlgids.
+Geen vaste open lijn meer — gebruiker stuurt feedback in tekst. Mogelijke
+verfijningen die op tafel lagen: mockup-teksten naar Engels zetten,
+flash-sidebar functioneel maken (filters echt laten filteren), extra
+lifestyle-foto's per merk.
 
 ## Werkwijze
 
